@@ -1,0 +1,41 @@
+.promo-section {
+  background-color: #0c0c0c;
+  width: 100%;
+  min-height: 700px;
+  height: 90vh;
+  position: relative;
+  background-image: url('/moto.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 60px 0;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.promo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(12, 12, 12, 0.4) 100%);
+  pointer-events: none;
+}
+
+.promo-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .promo-section {
+    min-height: 400px;
+    height: 60vh;
+    margin: 30px 0;
+  }
+}

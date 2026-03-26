@@ -1,5 +1,42 @@
 export default function ComboAeroporto() {
   return (
-    <div id="b_3536911_1_177342856039632336" className="gpc-b "><div className="gpc-b_sobreposicao"></div><div className="centralizar"><div id="e_3536911_1_177393355772701668" className="gpc-e e_imagem dd dm e_3536911_1_177393355772701668"><div className="c imagem e_imagem"><div className="imagem_fundo"></div></div></div><div id="e_3536911_1_177342856039675361" className="gpc-e e_caixa dd dm e_3536911_1_177342856039675361"><div className="c borda_igual e_caixa"></div></div><div id="e_3536911_1_177393338805148953" className="gpc-e e_imagem dd dm e_3536911_1_177393338805148953"><div className="c imagem e_imagem"><div className="imagem_fundo"></div></div></div><div id="e_3536911_1_177393298852181039" className="gpc-e e_caixa dd dm e_3536911_1_177393298852181039"><div className="c borda_igual e_caixa"></div></div><div id="e_3536911_1_177342856039613484" className="gpc-e e_texto dd dm e_3536911_1_177342856039613484"><div className="c e_texto"><p><span>EXCLUSIVO AEROPORTO</span></p></div></div><div id="e_3536911_1_177342856039654189" className="gpc-e e_linha_horizontal esconder_mobile dd e_3536911_1_177342856039654189"><div className="c e_linha_horizontal"></div></div><div id="e_3536911_1_177342856039623182" className="gpc-e e_texto dd dm e_3536911_1_177342856039623182"><div className="c e_texto"><p><b>COMBO PIZZA + GELATO</b></p></div></div><div id="e_3536911_1_177342856039616124" className="gpc-e e_titulo dd dm e_3536911_1_177342856039616124"><div className="c e_titulo"><h3><span><b>Pizza e Gelato <br /></b></span><span><b>no mesmo pedido</b></span></h3></div></div><div id="e_3536911_1_177342856039630737" className="gpc-e e_titulo dd dm e_3536911_1_177342856039630737"><div className="c e_titulo"><h2><span>89</span></h2></div></div><div id="e_3536911_1_177342856039627794" className="gpc-e e_titulo dd dm e_3536911_1_177342856039627794"><div className="c e_titulo"><h2><span>,90</span></h2></div></div><div id="e_3536911_1_177342856039645673" className="gpc-e e_titulo dd dm e_3536911_1_177342856039645673"><div className="c e_titulo"><h2><span>R$</span></h2></div></div><div id="e_3536911_1_177342856039625111" className="gpc-e e_botao dd dm e_3536911_1_177342856039625111"><a className="c borda_igual e_botao link_externo" href="https://wa.me/559536218600">PEDIR AGORA</a></div><div id="e_3536911_1_177342856039674618" className="gpc-e e_texto dd dm e_3536911_1_177342856039674618"><div className="c e_texto"><p><span>O único lugar em Boa Vista onde você pede a pizza que ama e ainda leva um gelato artesanal.</span></p></div></div></div></div>
+    <div id="b_3536911_1_177342856039632336" className="gpc-b " style={{ height: "auto", padding: "80px 0", background: "#080808" }}>
+      <div className="gpc-b_sobreposicao"></div>
+      <div className="centralizar" style={{ display: "flex", justifyContent: "center", position: "relative" }}>
+        
+        {/* Glow effect (luz de fundo) */}
+        <div style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "100%",
+          height: "100%",
+          background: "radial-gradient(circle at center, rgba(199, 154, 82, 0.15) 0%, transparent 65%)",
+          borderRadius: "50%",
+          zIndex: 0,
+          pointerEvents: "none"
+        }}></div>
+
+        <div className="combo-container" style={{ 
+          border: "1px solid rgba(199, 154, 82, 0.2)", 
+          padding: "20px", 
+          borderRadius: "12px", 
+          background: "rgba(11, 11, 11, 0.5)",
+          backdropFilter: "blur(10px)",
+          maxWidth: "1150px",
+          width: "95%",
+          position: "relative",
+          zIndex: 1,
+          boxShadow: "0 20px 50px rgba(0,0,0,0.5)"
+        }}>
+          <img 
+            src="/esfiha-em-dobro.png" 
+            alt="Promoção Esfiha em Dobro" 
+            style={{ width: "100%", height: "auto", display: "block" }} 
+          />
+        </div>
+      </div>
+    </div>
   );
 }

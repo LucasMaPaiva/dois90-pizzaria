@@ -1,5 +1,56 @@
-export default function Footer() {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Footer.css';
+
+const Footer = () => {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div id="b_3536911_1_177341313922024894" className="gpc-b "><div className="gpc-b_sobreposicao"></div><div className="centralizar"><div id="e_3536911_1_177341313922013935" className="gpc-e e_botao dd dm e_3536911_1_177341313922013935"><a className="c borda_igual e_botao link_interno" data-bloco="b_3536911_1_177340533469b404961c762" data-bloco-mobile="b_1650791_1_174160686667cecfd278119">.</a></div><div id="e_3536911_1_177341313922075168" className="gpc-e e_circulo dd dm e_3536911_1_177341313922075168"><div className="c e_circulo"></div></div><div id="e_3536911_1_177341313922017958" className="gpc-e e_imagem dd dm e_3536911_1_177341313922017958"><div className="c imagem e_imagem"><div className="imagem_fundo"></div></div></div><div id="e_3536911_1_177341313922073493" className="gpc-e e_texto dd dm e_3536911_1_177341313922073493"><div className="c e_texto"><p><span>2026 © Todos os direitos reservados. <b>DOIS90</b></span></p></div></div><div id="e_3536911_1_177341313922030766" className="gpc-e e_texto dd dm e_3536911_1_177341313922030766"><div className="c e_texto"><p><span>Retornar ao Topo!</span></p></div></div><div id="e_3536911_1_177341313922029441" className="gpc-e e_imagem dd dm e_3536911_1_177341313922029441"><div className="c imagem e_imagem"><div className="imagem_fundo"></div></div></div></div></div>
+    <footer className="main-footer">
+      <div className="footer-container">
+        <div className="footer-column branding">
+          <img src="/logo.svg" alt="Dois90 Logo" className="footer-logo" />
+          <p className="footer-tagline">A melhor pizza e experiência gastronômica da região. Tradição e inovação em cada fatia.</p>
+          <div className="social-links">
+            {/* Social icons could go here */}
+          </div>
+        </div>
+
+        <div className="footer-column links">
+          <h3>Links Úteis</h3>
+          <ul>
+            <li><button onClick={() => scrollToSection('panel-pizzaria')}>Pizzaria</button></li>
+            <li><button onClick={() => scrollToSection('panel-restaurante')}>Restaurante</button></li>
+            <li><button onClick={() => scrollToSection('panel-gelateria')}>Gelateria</button></li>
+            <li><button onClick={() => scrollToSection('b_3536911_1_177341147072481699')}>Nossas Unidades</button></li>
+            <li><button onClick={() => scrollToSection('b_3536911_1_177341229844636594')}>Promoção</button></li>
+          </ul>
+        </div>
+
+        <div className="footer-column legal">
+          <h3>Jurídico</h3>
+          <ul>
+            <li><Link to="/termos">Termos de Uso</Link></li>
+            <li><Link to="/privacidade">Política de Privacidade</Link></li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="footer-bottom-content">
+          <p>&copy; 2026 Dois90. Todos os direitos reservados.</p>
+          <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            Retornar ao Topo <span className="arrow">↑</span>
+          </button>
+        </div>
+      </div>
+    </footer>
   );
-}
+};
+
+export default Footer;

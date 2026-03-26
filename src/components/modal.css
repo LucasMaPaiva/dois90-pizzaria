@@ -1,0 +1,158 @@
+/* Location Modal Styles */
+.location-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.location-modal-content {
+  background-color: #111111;
+  border: 1px solid rgb(199, 154, 84);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 90%;
+  width: 450px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.location-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: rgb(199, 154, 84);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.location-modal-close:hover {
+  color: #fff;
+}
+
+.location-modal-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+.location-modal-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: rgb(156, 157, 145);
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+.location-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.location-modal-btn {
+  display: block;
+  background-color: rgb(199, 154, 84);
+  color: #000;
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.location-modal-btn:hover {
+  background-color: #ddb871;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+button.product-cta {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  /* Ensure we inherit the styles defined by .product-cta, but not browser defaults */
+  font-family: inherit;
+}
+
+/* Make Menu component naturally responsive on mobile */
+@media (max-width: 800px) {
+  #b_3536911_1_177340533469b404961c76e {
+    height: auto !important;
+    padding: 60px 0 !important;
+  }
+  #b_3536911_1_177340533469b404961c76e .centralizar {
+    position: relative !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+  }
+  #b_3536911_1_177340533469b404961c76e .gpc-e {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Specific tweaks for elements in normal flow */
+  #e_3536911_1_177340843781815322 { /* O que voce quer hoje? */
+    margin-bottom: -5px !important;
+    width: 90% !important;
+  }
+  #e_3536911_1_177340843781822615 { /* Linha horizontal */
+    width: 70px !important;
+    align-self: flex-start !important;
+    margin-left: 5% !important;
+  }
+  #e_3536911_1_177340843781810056 { /* Escolha agora e aproveite */
+    width: 90% !important;
+  }
+  #e_3536911_1_177340843781848514 { /* Texto pizzas artesanais... */
+    width: 90% !important;
+    margin-bottom: 20px !important;
+  }
+  #e_3536911_1_177340831289929755 { /* Cardapio */
+    width: 90% !important;
+  }
+  
+  #e_3536911_1_177340843781810056 .c, 
+  #e_3536911_1_177340843781848514 .c {
+    text-align: left !important;
+  }
+}
