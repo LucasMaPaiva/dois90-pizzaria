@@ -5,6 +5,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfUse from './pages/TermsOfUse';
 import CookieBanner from './components/CookieBanner';
 import WhatsAppWidget from './components/WhatsAppWidget';
+import NotFound from './pages/NotFound';
 import './index.css';
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/privacidade" element={<PrivacyPolicy />} />
         <Route path="/termos" element={<TermsOfUse />} />
-        {/* Fallback to home for any other route */}
-        <Route path="*" element={<Home />} />
+        {/* Wildcard route for 404 Not Found */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <CookieBanner />
       <WhatsAppWidget />
