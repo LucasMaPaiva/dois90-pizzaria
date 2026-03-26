@@ -19,3 +19,17 @@
     opacity: 0 !important;
     pointer-events: none !important;
 }
+
+/* Force visibility for legacy animation classes */
+.e_animacoes {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Ensure root is never hidden by legacy overlays */
+#root {
+    position: relative;
+    z-index: 100;
+}
