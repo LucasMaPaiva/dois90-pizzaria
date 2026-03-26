@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dois90.com.br/sitemap.xml

@@ -34,8 +34,8 @@
 
 @media (max-width: 768px) {
   .promo-section {
-    min-height: 400px;
-    height: 60vh;
-    margin: 30px 0;
+    min-height: 140px;
+    height: 20vh;
+    margin: 5px 0;
   }
 }
