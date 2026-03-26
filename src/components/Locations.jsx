@@ -1,4 +1,48 @@
+import { useState } from "react";
+import "./modal.css";
+
+const unitsData = {
+  aeroporto: {
+    name: "Bairro Aeroporto",
+    maps: "https://www.google.com/maps/dir//pizzaria+dois90+-+R.+Yey%C3%AA+Coelho,+580A+-+Aeroporto,+Boa+Vista+-+RR,+69310-118",
+    order: "https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa",
+    whatsappPizzaria: "https://wa.me/559591520290",
+    whatsappGelateria: "https://api.whatsapp.com/send?phone=5595991500290",
+    hasPizzaria: true,
+    hasGelateria: true,
+  },
+  cacari: {
+    name: "Bairro Caçari",
+    maps: "https://www.google.com/maps?client=firefox-b-d&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KcXKtcmZCJONMRJLiq0VPBD5&daddr=Av.+Ville+Roy,+2155+-+Terreo+-+Ca%C3%A7ari,+Boa+Vista+-+RR,+69307-725",
+    order: "http://pigz.com.br/dois90pizzaria",
+    whatsappPizzaria: "https://api.whatsapp.com/send?phone=559536218600",
+    hasPizzaria: true,
+    hasGelateria: false,
+  },
+  aparecida: {
+    name: "Bairro Aparecida",
+    maps: "https://www.google.com/maps/dir//Gelatos+dois90,+R.+Jos%C3%A9+Bonif%C3%A1cio,+504+-+Aparecida,+Boa+Vista+-+RR,+69306-275/@2.8190514,-60.6844148,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x8d93061c67223ac5:0xf86e983235c87193!2m2!1d-60.6600877!2d2.8374779?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D",
+    order: "https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-e-cafeteria-dois90-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d",
+    whatsappGelateria: "https://api.whatsapp.com/send?phone=5595981126473",
+    hasPizzaria: false,
+    hasGelateria: true,
+  }
+};
+
 export default function Locations() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState(null);
+
+  const openModal = (unitKey) => {
+    setSelectedUnit(unitsData[unitKey]);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedUnit(null);
+  };
+
   return (
     <div id="b_3536911_1_177340533469b404961c771" className="gpc-b ">
       <div className="gpc-b_sobreposicao"></div>
@@ -122,10 +166,47 @@ export default function Locations() {
           <div className="c e_texto"><p><span>11h30 – 23h00<br />Entrega: 40 min<br /></span></p></div>
         </div>
 
-        <div id="e_3536911_1_177341072861382619" className="gpc-e e_botao dd dm e_3536911_1_177341072861382619"><a className="c borda_igual e_botao link_externo" href="https://wa.me/559536218600">FAZER PEDIDO →</a></div>
-        <div id="e_3536911_1_177341095061069039" className="gpc-e e_botao dd dm e_3536911_1_177341095061069039"><a className="c borda_igual e_botao link_externo" href="https://wa.me/559536218600">FAZER PEDIDO →</a></div>
-        <div id="e_3536911_1_177341095480063088" className="gpc-e e_botao dd dm e_3536911_1_177341095480063088"><a className="c borda_igual e_botao link_externo" href="https://wa.me/559536218600">FAZER PEDIDO →</a></div>
+        <div id="e_3536911_1_177341072861382619" className="gpc-e e_botao dd dm e_3536911_1_177341072861382619">
+          <button className="c borda_igual e_botao link_externo" onClick={() => openModal('aeroporto')}>FAZER PEDIDO →</button>
+        </div>
+        <div id="e_3536911_1_177341095061069039" className="gpc-e e_botao dd dm e_3536911_1_177341095061069039">
+          <button className="c borda_igual e_botao link_externo" onClick={() => openModal('cacari')}>FAZER PEDIDO →</button>
+        </div>
+        <div id="e_3536911_1_177341095480063088" className="gpc-e e_botao dd dm e_3536911_1_177341095480063088">
+          <button className="c borda_igual e_botao link_externo" onClick={() => openModal('aparecida')}>FAZER PEDIDO →</button>
+        </div>
       </div>
+      {/* Interactive Modal */}
+      {isModalOpen && selectedUnit && (
+        <div className="location-modal-overlay" onClick={closeModal}>
+          <div className="location-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="location-modal-close" onClick={closeModal}>&times;</button>
+            <h3 className="location-modal-title">{selectedUnit.name}</h3>
+            <p className="location-modal-subtitle">Escolha como deseja prosseguir:</p>
+            
+            <div className="location-modal-options">
+              <a href={selectedUnit.maps} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
+                📍 Como Chegar
+              </a>
+              <a href={selectedUnit.order} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
+                🍕 Fazer Pedido Online
+              </a>
+              
+              {selectedUnit.hasPizzaria && (
+                <a href={selectedUnit.whatsappPizzaria} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
+                  📱 WhatsApp - Pizzaria
+                </a>
+              )}
+              
+              {selectedUnit.hasGelateria && (
+                <a href={selectedUnit.whatsappGelateria} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
+                  🍦 WhatsApp - Gelateria
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
