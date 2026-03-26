@@ -1,22 +1,25 @@
-.PHONY: build up down
+.PHONY: up down restart build logs
 
-IMAGE_NAME = dois90-react
-CONTAINER_NAME = dois90-react-app
-PORT = 8080
-
-# Build the Docker image using the Dockerfile inside the .docker directory
-build:
-	docker build -t $(IMAGE_NAME) -f .docker/Dockerfile .
-
-# Build the image and run the container
-up: build
-	docker run -d --name $(CONTAINER_NAME) -p $(PORT):80 $(IMAGE_NAME)
+# Inicia a aplicação em modo background (buildando se necessário)
+up:
+	docker compose up -d --build
 	@echo "======================================================"
-	@echo "A aplicação React está rodando em http://localhost:$(PORT)"
+	@echo "build finalizado"
 	@echo "======================================================"
 
-# Stop and remove the running container
+# Para a aplicação e remove os containers
 down:
-	@docker stop $(CONTAINER_NAME) 2>/dev/null || true
-	@docker rm $(CONTAINER_NAME) 2>/dev/null || true
-	@echo "O container $(CONTAINER_NAME) foi parado e removido com sucesso."
+	docker compose down
+	@echo "A aplicação foi parada e os containers removidos com sucesso."
+
+# Reinicia os containers
+restart:
+	docker compose restart
+
+# Apenas builda as imagens
+build:
+	docker compose build
+
+# Mostra os logs em tempo real
+logs:
+	docker compose logs -f
