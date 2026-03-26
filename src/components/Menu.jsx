@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./modal.css";
+import OrderModal from "./OrderModal";
 export default function Menu() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
@@ -1551,74 +1552,11 @@ export default function Menu() {
         </div>
       </div>
 
-      {isModalOpen && (
-        <div className="location-modal-overlay" onClick={closeModal}>
-          <div
-            className="location-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button className="location-modal-close" onClick={closeModal}>
-              &times;
-            </button>
-            <h3 className="location-modal-title">Escolha a Unidade</h3>
-            <p className="location-modal-subtitle">
-              Para onde deseja enviar seu pedido?
-            </p>
-            <div className="location-modal-options">
-              {modalType === "pizzaria" ? (
-                <>
-                  <a
-                    href="https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa"
-                    className="location-modal-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Pizzaria Dois90 - Bairro Aeroporto
-                  </a>
-                  <a
-                    href="http://pigz.com.br/dois90pizzaria"
-                    className="location-modal-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Pizzaria Dois90 - Bairro Caçari
-                  </a>
-                </>
-              ) : modalType === "gelateria" ? (
-                <>
-                  <a
-                    href="https://pedido.anota.ai/loja/dois90-gelateria-hc-nathana-martins?f=msa"
-                    className="location-modal-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Gelateria Dois90 - Bairro Aeroporto
-                  </a>
-                  <a
-                    href="https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-e-cafeteria-dois90-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d"
-                    className="location-modal-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Gelateria Dois90 - Bairro Aparecida
-                  </a>
-                </>
-              ) : (
-                <>
-                  <a
-                    href="https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa"
-                    className="location-modal-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Dois90 - Bairro Aeroporto
-                  </a>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      <OrderModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        type={modalType} 
+      />
     </div>
   );
 }

@@ -38,7 +38,7 @@
   gap: 30px;
 }
 
-.nav-links button, 
+.nav-links button:not(.nav-cta), 
 .nav-links a:not(.nav-cta) {
   background: none;
   border: none;
@@ -62,11 +62,15 @@
   color: #000 !important;
   padding: 10px 22px;
   border-radius: 4px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700 !important;
   font-size: 12px !important;
   letter-spacing: 1px;
+  cursor: pointer;
   transition: all 0.3s ease !important;
   box-shadow: 0 4px 15px rgba(199, 154, 82, 0.3);
+  text-transform: uppercase;
 }
 
 .nav-cta:hover {

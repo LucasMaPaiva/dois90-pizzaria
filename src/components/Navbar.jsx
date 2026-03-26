@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
+import OrderModal from './OrderModal';
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -42,25 +45,33 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <nav className={`main-navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="nav-container">
-        <Link to="/" className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <img src="/logo.svg" alt="Dois90 Logo" />
-        </Link>
+    <>
+      <nav className={`main-navbar ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
+          <Link to="/" className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <img src="/logo.svg" alt="Dois90 Logo" />
+          </Link>
 
-        <div className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
-          <button onClick={() => handleNavClick('panel-pizzaria')}>CARDÁPIO</button>
-          <button onClick={() => handleNavClick('b_3536911_1_177341147072481699')}>UNIDADES</button>
-          <button onClick={() => handleNavClick('b_3536911_1_177341164873967899')}>QUEM SOMOS</button>
-          <button onClick={() => handleNavClick('b_3536911_1_177341229844636594')}>PROMOÇÃO</button>
-          <a href="https://wa.me/559536218600" className="nav-cta">PEDIR AGORA</a>
+          <div className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+            <button onClick={() => handleNavClick('panel-pizzaria')}>CARDÁPIO</button>
+            <button onClick={() => handleNavClick('b_3536911_1_177341147072481699')}>UNIDADES</button>
+            <button onClick={() => handleNavClick('b_3536911_1_177341164873967899')}>QUEM SOMOS</button>
+            <button onClick={() => handleNavClick('b_3536911_1_177341229844636594')}>PROMOÇÃO</button>
+            <button onClick={() => setIsModalOpen(true)} className="nav-cta">PEDIR AGORA</button>
+          </div>
+
+          <button className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}></span>
+          </button>
         </div>
+      </nav>
 
-        <button className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          <span className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}></span>
-        </button>
-      </div>
-    </nav>
+      <OrderModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        type="all"
+      />
+    </>
   );
 };
 
