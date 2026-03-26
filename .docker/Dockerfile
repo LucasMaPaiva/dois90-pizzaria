@@ -12,6 +12,7 @@ RUN npm run build
 
 # Production stage
 FROM nginx:alpine
+RUN apk add --no-cache curl
 
 # Copy custom Nginx configuration
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf

@@ -1,16 +1,17 @@
 .PHONY: up down restart build logs
 
-# Inicia a aplicação em modo background (buildando se necessário)
-up:
-	docker compose up -d --build
+# Deployment (Zero-Downtime)
+deploy:
+	docker compose up -d --build --remove-orphans
 	@echo "======================================================"
-	@echo "build finalizado"
+	@echo "Atualização finalizada com sucesso!"
+	@echo "A aplicação foi reconstruída e reiniciada suavemente."
 	@echo "======================================================"
 
-# Para a aplicação e remove os containers
+# Para a aplicação e remove os containers (Atenção: gera downtime)
 down:
 	docker compose down
-	@echo "A aplicação foi parada e os containers removidos com sucesso."
+	@echo "A aplicação foi parada e os containers removidos."
 
 # Reinicia os containers
 restart:
