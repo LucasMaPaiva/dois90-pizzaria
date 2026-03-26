@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfUse from './pages/TermsOfUse';
 import CookieBanner from './components/CookieBanner';
+import WhatsAppWidget from './components/WhatsAppWidget';
 import './index.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="*" element={<Home />} />
       </Routes>
       <CookieBanner />
+      <WhatsAppWidget />
     </Router>
   );
 }

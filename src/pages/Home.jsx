@@ -63,7 +63,7 @@ const Home = () => {
 
     // No mutation observer here - we use CSS to hide legacy builder elements
     // This prevents conflicts with React's DOM management
-    
+
     return () => {
       // Cleanup window assignments if necessary
     };
@@ -75,7 +75,7 @@ const Home = () => {
       <Hero />
       <Menu />
       <ComboAeroporto />
-      <WhatsAppPromo />
+      {/* <WhatsAppPromo /> */}
       <Locations />
       <About />
       <PromoImage />
