@@ -85,13 +85,13 @@ export default function Locations() {
 
         {/* Addresses */}
         <div id="e_3536911_1_177341027777389731" className="gpc-e e_texto dd dm e_3536911_1_177341027777389731">
-          <div className="c e_texto"><p><span>Bairro Aeroporto, Boa Vista — RR</span></p></div>
+          <div className="c e_texto"><p><span>R. Yeyê Coelho, 580A - Aeroporto</span></p></div>
         </div>
         <div id="e_3536911_1_177341095061053753" className="gpc-e e_texto dd dm e_3536911_1_177341095061053753">
-          <div className="c e_texto"><p><span>Av. Vila Rog, 2185, Caçari — Boa Vista<br />(95) 3621-8600</span></p></div>
+          <div className="c e_texto"><p><span>Av. Ville Roy, 2185 - Caçari</span></p></div>
         </div>
         <div id="e_3536911_1_177341095480039015" className="gpc-e e_texto dd dm e_3536911_1_177341095480039015">
-          <div className="c e_texto"><p><span>Bairro N. S. Aparecida, Boa Vista — RR</span></p></div>
+          <div className="c e_texto"><p><span>R. José Bonifácio, 504 - Aparecida</span></p></div>
         </div>
 
         {/* Lines */}
@@ -183,7 +183,7 @@ export default function Locations() {
             <button className="location-modal-close" onClick={closeModal}>&times;</button>
             <h3 className="location-modal-title">{selectedUnit.name}</h3>
             <p className="location-modal-subtitle">Escolha como deseja prosseguir:</p>
-            
+
             <div className="location-modal-options">
               <a href={selectedUnit.maps} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
                 📍 Como Chegar
@@ -191,13 +191,13 @@ export default function Locations() {
               <a href={selectedUnit.order} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
                 🍕 Fazer Pedido Online
               </a>
-              
+
               {selectedUnit.hasPizzaria && (
                 <a href={selectedUnit.whatsappPizzaria} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
                   📱 WhatsApp - Pizzaria
                 </a>
               )}
-              
+
               {selectedUnit.hasGelateria && (
                 <a href={selectedUnit.whatsappGelateria} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
                   🍦 WhatsApp - Gelateria
