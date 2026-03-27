@@ -10,7 +10,6 @@ export default function Hero() {
       <div id="b_3536911_1_177340533469b404961c762" className="gpc-b hero-section">
         <div className="gpc-b_sobreposicao"></div>
         <div className="centralizar">
-          <div id="e_3536911_1_177342459633508031" ll_src="/site-hero.jpeg" ll_src_mobile="/site-hero.jpeg" className="gpc-e e_imagem esconder_desktop dm e_3536911_1_177342459633508031 se_imagem"><div className="c imagem e_imagem"></div></div>
           <div id="e_3536911_1_177340668315165072" className="gpc-e e_texto dd dm e_3536911_1_177340668315165072"><div className="c e_texto"><p><span>DESDE 1999 · BOA VISTA, RORAIMA</span></p></div></div>
           <div id="e_3536911_1_177340671892140103" className="gpc-e e_linha_horizontal esconder_mobile dd e_3536911_1_177340671892140103"><div className="c e_linha_horizontal"></div></div>
           <div id="e_3536911_1_177340533469b404961c77c590931320" className="gpc-e e_titulo dd dm e_3536911_1_177340533469b404961c77c590931320"><div className="c e_titulo"><h1><span>Seu dia com muito mais</span><span> sabor</span><span><br /></span></h1></div></div>
@@ -21,9 +20,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <OrderModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <OrderModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         type="all"
       />
     </>

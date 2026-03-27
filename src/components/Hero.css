@@ -9,8 +9,8 @@
   .hero-section {
     background-image: linear-gradient(to bottom, 
       rgba(10, 11, 10, 1) 0%, 
-      rgba(10, 11, 10, 0.8) 40%, 
-      rgba(10, 11, 10, 0) 70%), 
+      rgba(10, 11, 10, 0.95) 50%, 
+      rgba(10, 11, 10, 0) 90%), 
       url('/site-hero.jpeg') !important;
     background-position: center 30% !important; /* Move image a bit up to see pizza sooner */
     min-height: 90vh; 
