@@ -1,0 +1,24 @@
+.combo-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.combo-image {
+  max-width: 48%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .combo-flex-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .combo-image {
+    max-width: 100%;
+  }
+}

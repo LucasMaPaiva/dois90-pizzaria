@@ -1,3 +1,6 @@
+import React from 'react';
+import './ComboAeroporto.css';
+
 export default function ComboAeroporto() {
   return (
     <div id="b_3536911_1_177342856039632336" className="gpc-b " style={{ height: "auto", padding: "80px 0", background: "#080808" }}>
@@ -30,11 +33,18 @@ export default function ComboAeroporto() {
           zIndex: 1,
           boxShadow: "0 20px 50px rgba(0,0,0,0.5)"
         }}>
-          <img 
-            src="/esfiha-em-dobro.png" 
-            alt="Promoção Esfiha em Dobro" 
-            style={{ width: "100%", height: "auto", display: "block" }} 
-          />
+          <div className="combo-flex-container">
+            <img 
+              src="/esfiha em dobro 02.png" 
+              alt="Promoção Esfiha em Dobro" 
+              className="combo-image"
+            />
+            <img 
+              src="/esfiha-em-dobro-foto-esfirra.png" 
+              alt="Nossas Esfihas" 
+              className="combo-image"
+            />
+          </div>
         </div>
       </div>
     </div>
