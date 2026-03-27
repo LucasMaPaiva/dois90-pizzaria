@@ -1,0 +1,22 @@
+/* Tablet Responsive Fix for GreatPages Legacy Layout */
+@media all and (min-width: 551px) and (max-width: 980px) {
+  body, html {
+    overflow-x: hidden !important;
+  }
+
+  #site {
+    /* Scale the 980px layout down to fit the current viewport */
+    zoom: calc(100vw / 980);
+    
+    /* Ensure no weird wrapping happens because width is strictly enforced */
+    min-width: 980px !important;
+    width: 980px !important;
+    overflow-x: hidden !important;
+  }
+
+  .centralizar {
+    /* Ensure the wrapper doesn't shrink or collapse */
+    width: 960px !important;
+    margin: 0 auto;
+  }
+}
