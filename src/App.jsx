@@ -7,6 +7,7 @@ import CookieBanner from './components/CookieBanner';
 import WhatsAppWidget from './components/WhatsAppWidget';
 import NotFound from './pages/NotFound';
 import './index.css';
+import './TabletLandscape.css';
 
 function App() {
   return (

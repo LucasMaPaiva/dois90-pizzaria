@@ -1,0 +1,30 @@
+/* Tablet Landscape Responsive Fix for GreatPages Legacy Layout */
+/* O site original precisa de no mínimo 1200px reais de espaço porque tem elementos em left: -120px */
+@media all and (min-width: 1025px) and (max-width: 1550px) {
+  body, html {
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 
+   * Usando zoom porque transform: scale buga a barra de rolagem vertical (deixa espaço em branco).
+   * O segredo para não cortar a esquerda no Android ao usar zoom é ZERAR a margem esquerda!
+   * Caso contrário o navegador tenta centralizar uma caixa não-zoomada de 1550px na tela de 1100px.
+   */
+  #site {
+    zoom: calc(100vw / 1550);
+    width: 1550px !important;
+    min-width: 1550px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    position: relative;
+    left: 0;
+    overflow-x: hidden !important;
+  }
+  
+  .centralizar {
+    width: 960px !important;
+    margin: 0 auto !important;
+  }
+}
