@@ -7,6 +7,7 @@ import WhatsAppPromo from '../components/WhatsAppPromo';
 import Locations from '../components/Locations';
 import About from '../components/About';
 import PromoImage from '../components/PromoImage';
+import SocialGallery from '../components/SocialGallery';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -79,6 +80,7 @@ const Home = () => {
       <Locations />
       <About />
       <PromoImage />
+      <SocialGallery />
       <Footer />
     </div>
   );
