@@ -160,7 +160,7 @@ export default function Locations() {
           <div className="c e_texto"><p><span>Seg – Sex:</span><span> a partir das 17h45<br /></span><span>Sáb – Dom:</span><span> horário especial<br />Entrega: 30–40 min</span></p></div>
         </div>
         <div id="e_3536911_1_177341066573293364" className="gpc-e e_texto dd dm e_3536911_1_177341066573293364">
-          <div className="c e_texto"><p><span>Gelateria: 11h30 – 23h<br />Restaurante: Seg – Sab: 11:15 – 14:00<br />Pizzaria: 18h – 23h</span></p></div>
+          <div className="c e_texto"><p><span>Gelateria: 11h30 – 23h<br />Restaurante: Seg – Sab: 11:15 – 14:15<br />Pizzaria: 18h – 23h</span></p></div>
         </div>
         <div id="e_3536911_1_177341095480012793" className="gpc-e e_texto dd dm e_3536911_1_177341095480012793">
           <div className="c e_texto"><p><span>11h30 – 23h00<br />Entrega: 40 min<br /></span></p></div>
