@@ -22,29 +22,22 @@ export default function ComboAeroporto() {
         }}></div>
 
         <div className="combo-container" style={{ 
-          border: "1px solid rgba(199, 154, 82, 0.2)", 
-          padding: "20px", 
-          borderRadius: "12px", 
-          background: "rgba(11, 11, 11, 0.5)",
-          backdropFilter: "blur(10px)",
           maxWidth: "1150px",
           width: "95%",
           position: "relative",
           zIndex: 1,
+          borderRadius: "12px",
+          overflow: "hidden",
           boxShadow: "0 20px 50px rgba(0,0,0,0.5)"
         }}>
-          <div className="combo-flex-container">
-            <img 
-              src="/esfiha em dobro 02.png" 
-              alt="Promoção Esfiha em Dobro" 
-              className="combo-image"
-            />
-            <img 
-              src="/esfiha-em-dobro-foto-esfirra.png" 
-              alt="Nossas Esfihas" 
-              className="combo-image"
-            />
-          </div>
+          <video 
+            src="/site esfiha.mp4" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
         </div>
       </div>
     </div>
