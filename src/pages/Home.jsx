@@ -5,7 +5,6 @@ import Menu from '../components/Menu';
 import ComboAeroporto from '../components/ComboAeroporto';
 import WhatsAppPromo from '../components/WhatsAppPromo';
 import Locations from '../components/Locations';
-import About from '../components/About';
 import PromoImage from '../components/PromoImage';
 import SocialGallery from '../components/SocialGallery';
 import Footer from '../components/Footer';
@@ -62,6 +61,14 @@ const Home = () => {
     window.switchSub = switchSub;
     window.animateCards = animateCards;
 
+    // On mobile: remove default active states so nothing is pre-selected
+    const isMobile = window.innerWidth <= 600;
+    if (isMobile) {
+      document.querySelectorAll(".main-tab.active").forEach((t) => t.classList.remove("active"));
+      document.querySelectorAll(".sub-tab.active").forEach((t) => t.classList.remove("active"));
+      document.querySelectorAll(".panel.active").forEach((p) => p.classList.remove("active"));
+    }
+
     // No mutation observer here - we use CSS to hide legacy builder elements
     // This prevents conflicts with React's DOM management
 
@@ -78,7 +85,6 @@ const Home = () => {
       <ComboAeroporto />
       {/* <WhatsAppPromo /> */}
       <Locations />
-      <About />
       <PromoImage />
       <SocialGallery />
       <Footer />
