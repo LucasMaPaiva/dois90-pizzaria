@@ -13,34 +13,33 @@ const WhatsAppWidget = () => {
 
   const handleSendToUnits = (e) => {
     e.preventDefault();
-    if (message.trim()) {
-      setStep('units');
-    }
+    setStep('units');
   };
 
   const units = [
-    { 
-      name: 'Pizzaria - Bairro Aeroporto', 
-      url: 'https://wa.me/559591520290' 
+    {
+      name: 'Pizzaria - Bairro Aeroporto',
+      url: 'https://wa.me/559591520290'
     },
-    { 
-      name: 'Pizzaria - Bairro Caçari', 
-      url: 'https://api.whatsapp.com/send?phone=559536218600' 
+    {
+      name: 'Pizzaria - Bairro Caçari',
+      url: 'https://api.whatsapp.com/send?phone=559536218600'
     },
-    { 
-      name: 'Gelateria - Bairro Aparecida (Unid. 1)', 
-      url: 'https://api.whatsapp.com/send?phone=5595991500290' 
+    {
+      name: 'Gelateria - Bairro Aparecida (Unid. 1)',
+      url: 'https://api.whatsapp.com/send?phone=5595991500290'
     },
-    { 
-      name: 'Gelateria - Bairro Aparecida (Unid. 2)', 
-      url: 'https://api.whatsapp.com/send?phone=5595981126473' 
+    {
+      name: 'Gelateria - Bairro Aparecida (Unid. 2)',
+      url: 'https://api.whatsapp.com/send?phone=5595981126473'
     }
   ];
 
   const handleFinalSend = (baseUrl) => {
-    const encodedMsg = encodeURIComponent(message);
-    const finalUrl = baseUrl.includes('?') 
-      ? `${baseUrl}&text=${encodedMsg}` 
+    const finalMsg = message.trim() || 'oii gostaria de fazer um pedido';
+    const encodedMsg = encodeURIComponent(finalMsg);
+    const finalUrl = baseUrl.includes('?')
+      ? `${baseUrl}&text=${encodedMsg}`
       : `${baseUrl}?text=${encodedMsg}`;
     window.open(finalUrl, '_blank');
     handleClose();
@@ -61,7 +60,7 @@ const WhatsAppWidget = () => {
           <div className="wa-header">
             <div className="wa-info">
               <div className="wa-avatar">
-                <img src="/mila.png" alt="Milla" />
+                <img src="/milla-novo.png" alt="Milla" />
                 <span className="wa-dot-online"></span>
               </div>
               <div className="wa-user-details">
@@ -73,15 +72,14 @@ const WhatsAppWidget = () => {
           </div>
           <div className="wa-body">
             <div className="wa-welcome-msg">
-              <p>Oieee...<br/>eu sou a Milla, a atendente virtuall da Dois90</p>
+              <p>Oieee...<br />eu sou a Milla, a atendente virtual da Dois90</p>
             </div>
             <p className="wa-instruction">Em que podemos ajudar hoje? Digite sua mensagem abaixo:</p>
             <form onSubmit={handleSendToUnits}>
-              <textarea 
-                value={message} 
+              <textarea
+                value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Escreva sua mensagem aqui..."
-                required
               />
               <button type="submit" className="wa-send-btn">Enviar mensagem</button>
             </form>
@@ -100,8 +98,8 @@ const WhatsAppWidget = () => {
             <p>Para qual unidade você deseja enviar esta mensagem?</p>
             <div className="wa-units-list">
               {units.map((unit, idx) => (
-                <button 
-                  key={idx} 
+                <button
+                  key={idx}
                   className="wa-unit-option"
                   onClick={() => handleFinalSend(unit.url)}
                 >

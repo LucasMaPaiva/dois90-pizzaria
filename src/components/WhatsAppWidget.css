@@ -67,7 +67,7 @@
 
 .wa-header {
   background-color: #075e54;
-  color: #000 !important;
+  color: #fff !important;
   padding: 10px 15px;
   display: flex;
   justify-content: space-between;
@@ -91,7 +91,7 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #000 !important;
+  border: 2px solid #fff !important;
 }
 
 .wa-dot-online {
@@ -113,19 +113,19 @@
 .wa-user-details strong {
   font-size: 16px;
   line-height: 1.2;
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .wa-status {
   font-size: 12px;
   opacity: 0.8;
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .wa-close {
   background: none;
   border: none;
-  color: #000 !important;
+  color: #fff !important;
   font-size: 24px;
   cursor: pointer;
   opacity: 1;

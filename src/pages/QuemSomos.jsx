@@ -21,8 +21,8 @@ export default function QuemSomos() {
             <p>Um nome singular para uma pizzaria, mas com certeza um nome bem contextualizado com a história de Roraima, pois 2-90 foi a placa do primeiro automóvel táxi de Boa Vista que não era um Jeep.</p>
             <p>Em 1966, o Aero Willys azul, com sua placa 2-90, tornou-se um sucesso, muitas pessoas queriam aproveitar a novidade e dar uma volta pela cidade. Assim, também foi criado o primeiro ponto de táxi de Boa Vista, localizado na esquina onde hoje são as avenidas Getúlio Vargas e Sílvio Botelho, no Centro. O ponto recebeu do então governador Hélio Campos a concessão de uma linha telefônica com o mesmo número: 2-90.</p>
           </div>
-          <div className="quemsomos-image">
-            <img src="/car.png" alt="Aero Willys placa 2-90" />
+          <div className="quemsomos-image no-marking">
+            <img src="/carr-aero-willys.png" alt="Aero Willys placa 2-90" />
           </div>
         </section>
 
@@ -46,8 +46,8 @@ export default function QuemSomos() {
               </div>
             </div>
           </div>
-          <div className="quemsomos-image">
-            <img src="/logo-25-anos.jpeg" alt="Logo 25 Anos Dois90" />
+          <div className="quemsomos-image no-marking">
+            <img src="/logo-quem-somos.png" alt="Logo Quem Somos Dois90" />
           </div>
         </section>
       </div>

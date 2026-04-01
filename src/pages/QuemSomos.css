@@ -91,6 +91,12 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
+.quemsomos-image.no-marking {
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+
 .quemsomos-image img {
   width: 100%;
   height: auto;
@@ -98,6 +104,11 @@
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
+}
+
+.quemsomos-image.no-marking img {
+  min-height: auto;
+  object-fit: contain;
 }
 
 .quemsomos-image:hover img {
