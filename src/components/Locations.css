@@ -1,0 +1,250 @@
+/* Locations Section Styles */
+.locations-section {
+  padding: 80px 5%;
+  background-color: #0a0a0a;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.locations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.locations-header {
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.locations-header .label {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #c79a54;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.locations-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  margin: 0;
+}
+
+.locations-header h2 i {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Location Card */
+.location-card {
+  background: #111;
+  border: 1px solid rgba(199, 154, 84, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.location-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(199, 154, 84, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Amenities at Top */
+.location-amenities {
+  display: flex;
+  flex-wrap: wrap; /* allow wrapping on super small screens, but aim for 1 line on desktop */
+  gap: 8px;
+  margin-bottom: 25px;
+  min-height: 28px; /* ensure consistency even with fewer badges */
+  align-items: center;
+}
+
+.amenity-badge {
+  background: rgba(199, 154, 84, 0.1);
+  color: #c79a54;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(199, 154, 84, 0.3);
+}
+
+/* Photo Display */
+.location-photo {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.location-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.location-card:hover .location-photo img {
+  transform: scale(1.05);
+}
+
+/* Photo Placeholder */
+.location-photo-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(45deg, #1a1a1a, #222);
+  border-radius: 10px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.location-photo-placeholder i {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 24px;
+}
+
+/* Card Content */
+.location-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.location-address {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Sectors (Clickable) */
+.location-sectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sector-link {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sector-link:hover {
+  color: #c79a54;
+}
+
+.sector-link i {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* Action Buttons */
+.location-actions {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #c79a54;
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: #ddb871;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #c79a54;
+  border: 1px solid #c79a54;
+}
+
+.btn-secondary:hover {
+  background: rgba(199, 154, 84, 0.1);
+}
+
+/* Hours Modal Specifics */
+.hours-list {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.hour-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hour-label {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.hour-time {
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .location-actions {
+    grid-template-columns: 1fr;
+  }
+}
