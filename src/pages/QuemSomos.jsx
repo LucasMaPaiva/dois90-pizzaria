@@ -47,7 +47,7 @@ export default function QuemSomos() {
             </div>
           </div>
           <div className="quemsomos-image no-marking">
-            <img src="/logo-quem-somos.png" alt="Logo Quem Somos Dois90" />
+            <img src="/logo-25-anos-3d.png" alt="Logo Quem Somos Dois90" />
           </div>
         </section>
       </div>
