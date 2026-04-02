@@ -1052,13 +1052,7 @@ export default function Menu() {
                     {" "}
                     Panificação &amp; Café{" "}
                   </button>{" "}
-                  <button
-                    className="sub-tab"
-                    onClick={(e) => window.switchSub(e.currentTarget, "combg")}
-                  >
-                    {" "}
-                    Combos{" "}
-                  </button>{" "}
+
                 </div>{" "}
                 <div className="panel active" id="panel-gel">
                   {" "}
@@ -1071,11 +1065,10 @@ export default function Menu() {
                     >
                       {" "}
                       <div className="product-badge">Mais pedido</div>{" "}
-                      <div className="product-name">Gelato Duo</div>{" "}
+                      <div className="product-name">Gelato Doe</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        2 bolas artesanais — escolha entre 24 sabores frescos
-                        diários{" "}
+                        Acondicionado em isopor térmico, ele mantém a temperatura ideal por horas – perfeito para levar pra casa e curtir com a família.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1091,11 +1084,10 @@ export default function Menu() {
                     >
                       {" "}
                       <div className="product-badge">Popular</div>{" "}
-                      <div className="product-name">Gelato Quarteto</div>{" "}
+                      <div className="product-name">Gelato Quatedo</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        4 bolas artesanais em copo térmico — 24 sabores à
-                        escolha{" "}
+                        Quatro bolas de gelatos fresquinhos, variados e irresistíveis, acomodados no isopor para manter a qualidade e o sabor.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1110,11 +1102,10 @@ export default function Menu() {
                     onClick={() => openModal("gelateria")}
                     >
                       {" "}
-                      <div className="product-name">Porção Família</div>{" "}
+                      <div className="product-name">Gelato Porção Família</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        8 bolas artesanais em caixa térmica — perfeito para
-                        levar para casa{" "}
+                        Oito bolas de gelatos fresquinhos, variados e irresistíveis, acomodados no isopor para manter a qualidade e o sabor.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1132,16 +1123,15 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "0.03s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
                       <div className="product-name">
-                        Torta Ninho com Chocolate M
+                        Ninho com Chocolate
                       </div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Massa branca artesanal, brigadeiro Ninho e black,
-                        chantininho{" "}
+                        Massa branca, brigadeiro Ninho, brigadeiro black e chantininho.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1153,15 +1143,15 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "0.09s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
                       <div className="product-name">
-                        Torta Floresta Negra M
+                        Abacaxi
                       </div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Massa de chocolate, chantininho, amarenas e ganache{" "}
+                        Massa branca, brigadeiro branco, abacaxi em pedaços e creme.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1173,14 +1163,13 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "0.15s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
-                      <div className="product-name">Torta Abacaxi M</div>{" "}
+                      <div className="product-name">Cupuaçu</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Massa branca, abacaxi em pedaços, brigadeiro branco
-                        artesanal{" "}
+                        Massa branca, brigadeiro black, doce de cupuaçu e chantininho.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1192,16 +1181,75 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "0.21s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
                       <div className="product-name">
-                        Torta Ninho com Chocolate G
+                        Dois Amores
                       </div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Versão grande — perfeita para celebrações em
-                        família{" "}
+                        Massa de chocolate, brigadeiro Ninho, brigadeiro black e chantininho.{" "}
+                      </div>{" "}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
+                        className="product-cta"
+                      >
+                        Peça já
+                      </button>{" "}
+                    </div>{" "}
+                    <div
+                      className="product-card"
+                      style={{ animationDelay: "0.27s" }}
+                      onClick={() => openModal("gelateria")}
+                    >
+                      {" "}
+                      <div className="product-name">
+                        Floresta Negra
+                      </div>{" "}
+                      <div className="product-desc">
+                        {" "}
+                        Massa de chocolate, chantininho, amarenas e raspas de chocolate.{" "}
+                      </div>{" "}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
+                        className="product-cta"
+                      >
+                        Peça já
+                      </button>{" "}
+                    </div>{" "}
+                    <div
+                      className="product-card"
+                      style={{ animationDelay: "0.33s" }}
+                      onClick={() => openModal("gelateria")}
+                    >
+                      {" "}
+                      <div className="product-name">
+                        Ninho com Morango
+                      </div>{" "}
+                      <div className="product-desc">
+                        {" "}
+                        Massa branca, brigadeiro Ninho, chantininho e geleia de morango.{" "}
+                      </div>{" "}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
+                        className="product-cta"
+                      >
+                        Peça já
+                      </button>{" "}
+                    </div>{" "}
+                    <div
+                      className="product-card"
+                      style={{ animationDelay: "0.39s" }}
+                      onClick={() => openModal("gelateria")}
+                    >
+                      {" "}
+                      <div className="product-name">
+                        Prestigio
+                      </div>{" "}
+                      <div className="product-desc">
+                        {" "}
+                        Massa chocolate, brigadeiro black, coco, ganache e chocolate branco.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1225,8 +1273,7 @@ export default function Menu() {
                       <div className="product-name">Açaí Frozen 400ml</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Açaí frozen cremoso, refrescante, sem açúcar
-                        adicionado{" "}
+                        Açaí frozen cremoso, refrescante e cheio de energia, servido no copo de 400ml para matar sua vontade a qualquer hora.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1244,7 +1291,7 @@ export default function Menu() {
                       <div className="product-name">Açaí Frozen 500ml</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        A pedida certa para qualquer hora do dia{" "}
+                        Açaí frozen cremoso, refrescante e cheio de energia, servido no copo de 500ml para matar sua vontade a qualquer hora.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1262,7 +1309,7 @@ export default function Menu() {
                       <div className="product-name">Açaí Frozen 700ml</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Açaí puro, saboroso e energético no tamanho maior{" "}
+                        Açaí frozen cremoso, refrescante e cheio de energia, servido no copo de 700ml para matar sua vontade a qualquer hora.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1365,16 +1412,16 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "0.87s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
-                      <div className="product-badge">Zero Lactose</div>{" "}
+                      <div className="product-badge">Mais pedido</div>{" "}
                       <div className="product-name">
-                        Bolo Chocolate Zero Lactose
+                        Mini Bolo Chocolate Com Cobertura
                       </div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Intenso sabor de chocolate, para todos os paladares{" "}
+                        Mini bolo de chocolate com calda de chocolate na parte superior.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1386,15 +1433,15 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "0.93s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
                       <div className="product-name">
-                        Bolo Ninho com Nutella
+                        Bolo de Milho
                       </div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Massa leite ninho coberta com Nutella cremosa{" "}
+                        Bolo macio e úmido, com sabor natural do milho fresco.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1406,14 +1453,14 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "0.99s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
-                      <div className="product-name">Bolo Mesclado</div>{" "}
+                      <div className="product-badge">Zero Lactose</div>{" "}
+                      <div className="product-name">Bolo Laranja</div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Massa mesclada de chocolate e baunilha, sabor
-                        equilibrado{" "}
+                        Bolo fofinho, com sabor natural de laranja e zero lactose.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1425,16 +1472,35 @@ export default function Menu() {
                     <div
                       className="product-card"
                       style={{ animationDelay: "1.05s" }}
-                    onClick={() => openModal("gelateria")}
+                      onClick={() => openModal("gelateria")}
                     >
                       {" "}
                       <div className="product-name">
-                        Pudim de Leite Condensado
+                        Bolo Ninho com Nutella
                       </div>{" "}
                       <div className="product-desc">
                         {" "}
-                        Feito artesanalmente, sem trigo — cremoso e
-                        irresistível{" "}
+                        Bolo macio de leite ninho coberto com Nutella cremosa.{" "}
+                      </div>{" "}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
+                        className="product-cta"
+                      >
+                        Peça já
+                      </button>{" "}
+                    </div>{" "}
+                    <div
+                      className="product-card"
+                      style={{ animationDelay: "1.11s" }}
+                      onClick={() => openModal("gelateria")}
+                    >
+                      {" "}
+                      <div className="product-name">
+                        Bolo Mesclado
+                      </div>{" "}
+                      <div className="product-desc">
+                        {" "}
+                        Massa fofinha mesclada de chocolate e baunilha.{" "}
                       </div>{" "}
                       <button
                         onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
@@ -1511,92 +1577,7 @@ export default function Menu() {
                     </div>{" "}
                   </div>{" "}
                 </div>{" "}
-                <div className="panel" id="panel-combg">
-                  {" "}
-                  <div className="products-grid">
-                    {" "}
-                    <div
-                      className="product-card"
-                      style={{ animationDelay: "1.29s" }}
-                    onClick={() => openModal("gelateria")}
-                    >
-                      {" "}
-                      <div className="product-badge">Só no Delivery</div>{" "}
-                      <div className="product-name">Combo Tarde Gostosa</div>{" "}
-                      <div className="product-desc">
-                        {" "}
-                        Gelato Quarteto (4 bolas) + MilkShake 340ml à
-                        escolha{" "}
-                      </div>{" "}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
-                        className="product-cta"
-                      >
-                        Peça já
-                      </button>{" "}
-                    </div>{" "}
-                    <div
-                      className="product-card"
-                      style={{ animationDelay: "1.35s" }}
-                    onClick={() => openModal("gelateria")}
-                    >
-                      {" "}
-                      <div className="product-badge">Família</div>{" "}
-                      <div className="product-name">Combo Família</div>{" "}
-                      <div className="product-desc">
-                        {" "}
-                        Porção Família (8 bolas) + Torta M + Bebida à
-                        escolha{" "}
-                      </div>{" "}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
-                        className="product-cta"
-                      >
-                        Peça já
-                      </button>{" "}
-                    </div>{" "}
-                    <div
-                      className="product-card"
-                      style={{ animationDelay: "1.41s" }}
-                    onClick={() => openModal("gelateria")}
-                    >
-                      {" "}
-                      <div className="product-name">
-                        Combo Café da Manhã
-                      </div>{" "}
-                      <div className="product-desc">
-                        {" "}
-                        Café com Leite + Pão Artesanal + Fatia de Bolo{" "}
-                      </div>{" "}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
-                        className="product-cta"
-                      >
-                        Peça já
-                      </button>{" "}
-                    </div>{" "}
-                    <div
-                      className="product-card"
-                      style={{ animationDelay: "1.47s" }}
-                    onClick={() => openModal("gelateria")}
-                    >
-                      {" "}
-                      <div className="product-name">
-                        Combo Sobremesa Solo
-                      </div>{" "}
-                      <div className="product-desc">
-                        {" "}
-                        Torta M + Gelato Duo (2 bolas) + Calda Quente{" "}
-                      </div>{" "}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); openModal("gelateria"); }}
-                        className="product-cta"
-                      >
-                        Peça já
-                      </button>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>{" "}
+
               </div>{" "}
             </section>
           </div>
