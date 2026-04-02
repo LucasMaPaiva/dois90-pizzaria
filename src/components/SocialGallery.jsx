@@ -36,7 +36,7 @@ const SocialGallery = () => {
         </div>
 
         <div className="avatar-side">
-          <img src="/milla celular.png" alt="Redes Sociais Dois90" loading="lazy" />
+          <img src="/milla-e-celular.png" alt="Redes Sociais Dois90" loading="lazy" />
         </div>
       </div>
 
