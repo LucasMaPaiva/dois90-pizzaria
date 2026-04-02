@@ -3,35 +3,87 @@ import "./modal.css";
 
 const unitsData = {
   aeroporto: {
-    name: "Bairro Aeroporto",
+    name: "Unidade Aeroporto",
     maps: "https://www.google.com/maps/dir//pizzaria+dois90+-+R.+Yey%C3%AA+Coelho,+580A+-+Aeroporto,+Boa+Vista+-+RR,+69310-118",
     order: "https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa",
     whatsappPizzaria: "https://wa.me/559591520290",
     whatsappGelateria: "https://api.whatsapp.com/send?phone=5595991500290",
     hasPizzaria: true,
     hasGelateria: true,
+    hasRestaurante: true,
+    services: ["DELIVERY", "DRIVE THRU", "ÁREA KIDS"],
+    hours: {
+      pizzaria: {
+        title: "Pizzaria",
+        items: [
+          { label: "Loja física", time: "17:30 – 23:00" },
+          { label: "Delivery", time: "17:30 – 23:00" },
+          { label: "Drive", time: "17:30 – 23:00" },
+          { label: "Jantar", time: "18:30 – 22:00" }
+        ]
+      },
+      restaurante: {
+        title: "Restaurante",
+        items: [
+          { label: "Seg – Sáb", time: "11:15 – 14:15" },
+          { label: "Delivery", time: "11:15 – 14:15" },
+          { label: "Drive", time: "11:15 – 14:15" }
+        ]
+      },
+      gelateria: {
+        title: "Gelateria",
+        items: [
+          { label: "Loja física (Seg-Sáb)", time: "11:15 – 23:00" },
+          { label: "Loja física (Dom)", time: "12:00 – 23:00" },
+          { label: "Delivery (Seg-Sáb)", time: "08:30 – 22:00" },
+          { label: "Delivery (Dom)", time: "12:00 – 22:00" }
+        ]
+      }
+    }
   },
   cacari: {
-    name: "Bairro Caçari",
+    name: "Unidade Caçari",
     maps: "https://www.google.com/maps?client=firefox-b-d&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KcXKtcmZCJONMRJLiq0VPBD5&daddr=Av.+Ville+Roy,+2155+-+Terreo+-+Ca%C3%A7ari,+Boa+Vista+-+RR,+69307-725",
     order: "http://pigz.com.br/dois90pizzaria",
     whatsappPizzaria: "https://api.whatsapp.com/send?phone=559536218600",
     hasPizzaria: true,
     hasGelateria: false,
+    services: ["DELIVERY", "ÁREA KIDS"],
+    hours: {
+      pizzaria: {
+        title: "Pizzaria",
+        items: [
+          { label: "Seg – Dom", time: "18:00 – 23:00" },
+          { label: "Todos os dias", time: "" }
+        ]
+      }
+    }
   },
   aparecida: {
-    name: "Bairro Aparecida",
+    name: "Unidade Aparecida",
     maps: "https://www.google.com/maps/dir//Gelatos+dois90,+R.+Jos%C3%A9+Bonif%C3%A1cio,+504+-+Aparecida,+Boa+Vista+-+RR,+69306-275/@2.8190514,-60.6844148,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x8d93061c67223ac5:0xf86e983235c87193!2m2!1d-60.6600877!2d2.8374779?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D",
     order: "https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-e-cafeteria-dois90-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d",
     whatsappGelateria: "https://api.whatsapp.com/send?phone=5595981126473",
     hasPizzaria: false,
     hasGelateria: true,
+    services: ["DELIVERY", "ÁREA KIDS"],
+    hours: {
+      gelateria: {
+        title: "Gelateria",
+        items: [
+          { label: "Loja Física", time: "Seg – Dom: 12:15 – 23:15" },
+          { label: "Delivery/Retirada", time: "Seg – Dom: 08:30 – 22:00" }
+        ]
+      }
+    }
   }
 };
 
 export default function Locations() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState(null);
+  const [isHoursModalOpen, setIsHoursModalOpen] = useState(false);
+  const [hoursData, setHoursData] = useState(null);
 
   const openModal = (unitKey) => {
     setSelectedUnit(unitsData[unitKey]);
@@ -41,6 +93,17 @@ export default function Locations() {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedUnit(null);
+  };
+
+  const openHoursModal = (unitKey, categoryKey) => {
+    const unit = unitsData[unitKey];
+    setHoursData(unit.hours[categoryKey]);
+    setIsHoursModalOpen(true);
+  };
+
+  const closeHoursModal = () => {
+    setIsHoursModalOpen(false);
+    setHoursData(null);
   };
 
   return (
@@ -63,13 +126,31 @@ export default function Locations() {
         <div id="e_3536911_1_177341095480074944" className="gpc-e e_caixa dd dm e_3536911_1_177341095480074944"><div className="c borda_igual e_caixa"></div></div>
 
         <div id="e_3536911_1_177341016009603334" className="gpc-e e_texto dd dm e_3536911_1_177341016009603334">
-          <div className="c e_texto"><p><span><b>PIZZARIA, RESTAURANTE, GELATERIA DRIVE THRU</b></span></p></div>
+          <div className="c e_texto">
+            <p className="services-list">
+              {unitsData.aeroporto.services.map((s, i) => (
+                <span key={i}><b>{s}</b>{i < unitsData.aeroporto.services.length - 1 ? " • " : ""}</span>
+              ))}
+            </p>
+          </div>
         </div>
         <div id="e_3536911_1_177341095061029346" className="gpc-e e_texto dd dm e_3536911_1_177341095061029346">
-          <div className="c e_texto"><p><span>PIZZARIA</span></p></div>
+          <div className="c e_texto">
+            <p className="services-list">
+              {unitsData.cacari.services.map((s, i) => (
+                <span key={i}><b>{s}</b>{i < unitsData.cacari.services.length - 1 ? " • " : ""}</span>
+              ))}
+            </p>
+          </div>
         </div>
         <div id="e_3536911_1_177341095480096768" className="gpc-e e_texto dd dm e_3536911_1_177341095480096768">
-          <div className="c e_texto"><p><span>GELATERIA</span></p></div>
+          <div className="c e_texto">
+            <p className="services-list">
+              {unitsData.aparecida.services.map((s, i) => (
+                <span key={i}><b>{s}</b>{i < unitsData.aparecida.services.length - 1 ? " • " : ""}</span>
+              ))}
+            </p>
+          </div>
         </div>
 
         {/* Units Titles */}
@@ -99,71 +180,34 @@ export default function Locations() {
         <div id="e_3536911_1_177341095480011039" className="gpc-e e_linha_horizontal dd dm e_3536911_1_177341095480011039"><div className="c e_linha_horizontal"></div></div>
         <div id="e_3536911_1_177341095061059651" className="gpc-e e_linha_horizontal dd dm e_3536911_1_177341095061059651"><div className="c e_linha_horizontal"></div></div>
 
-        {/* BOXES - AEROPORTO (6 BLOCKS GRID 3x2) */}
-        {/* ROW 1 */}
-        {/* 1. PIZZARIA (Pos 1: R1, C1) */}
-        <div id="e_3536911_1_177341043586466135" className="gpc-e e_caixa dd dm e_3536911_1_177341043586466135"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341050297651173" className="gpc-e e_texto dd dm e_3536911_1_177341050297651173">
+        {/* BOXES - AEROPORTO */}
+        {/* ROW 1: Clickable Categories */}
+        {/* 1. PIZZARIA */}
+        <div id="e_3536911_1_177341043586466135" className="gpc-e e_caixa dd dm e_3536911_1_177341043586466135 clickable" onClick={() => openHoursModal('aeroporto', 'pizzaria')}><div className="c borda_igual e_caixa"></div></div>
+        <div id="e_3536911_1_177341050297651173" className="gpc-e e_texto dd dm e_3536911_1_177341050297651173 clickable" onClick={() => openHoursModal('aeroporto', 'pizzaria')}>
           <div className="c e_texto"><p><span><b>PIZZARIA</b></span></p></div>
         </div>
-        {/* 2. RESTAURANTE (Pos 2: R1, C2) */}
-        <div id="e_3536911_1_177341056214779187" className="gpc-e e_caixa dd dm e_3536911_1_177341056214779187"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341056214731717" className="gpc-e e_texto dd dm e_3536911_1_177341056214731717">
+        {/* 2. RESTAURANTE */}
+        <div id="e_3536911_1_177341056214779187" className="gpc-e e_caixa dd dm e_3536911_1_177341056214779187 clickable" onClick={() => openHoursModal('aeroporto', 'restaurante')}><div className="c borda_igual e_caixa"></div></div>
+        <div id="e_3536911_1_177341056214731717" className="gpc-e e_texto dd dm e_3536911_1_177341056214731717 clickable" onClick={() => openHoursModal('aeroporto', 'restaurante')}>
           <div className="c e_texto"><p><span><b>RESTAURANTE</b></span></p></div>
         </div>
-        {/* 3. GELATERIA (Pos 3: R1, C3) */}
-        <div id="e_3536911_1_177341058195818301" className="gpc-e e_caixa dd dm e_3536911_1_177341058195818301"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341058195840414" className="gpc-e e_texto dd dm e_3536911_1_177341058195840414">
+        {/* 3. GELATERIA */}
+        <div id="e_3536911_1_177341058195818301" className="gpc-e e_caixa dd dm e_3536911_1_177341058195818301 clickable" onClick={() => openHoursModal('aeroporto', 'gelateria')}><div className="c borda_igual e_caixa"></div></div>
+        <div id="e_3536911_1_177341058195840414" className="gpc-e e_texto dd dm e_3536911_1_177341058195840414 clickable" onClick={() => openHoursModal('aeroporto', 'gelateria')}>
           <div className="c e_texto"><p><span><b>GELATERIA</b></span></p></div>
         </div>
 
-        {/* ROW 2 */}
-        {/* 4. DELIVERY (Pos 4: R2, C1) */}
-        <div id="e_3536911_1_177341060547829255" className="gpc-e e_caixa dd dm e_3536911_1_177341060547829255"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341060547893978" className="gpc-e e_texto dd dm e_3536911_1_177341060547893978">
-          <div className="c e_texto"><p><span><b>DELIVERY</b></span></p></div>
-        </div>
-        {/* 5. DRIVE THRU (Pos 5: R2, C2) */}
-        <div id="e_3536911_1_177341060547862785" className="gpc-e e_caixa dd dm e_3536911_1_177341060547862785"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341060547817371" className="gpc-e e_texto dd dm e_3536911_1_177341060547817371">
-          <div className="c e_texto"><p><span><b>DRIVE THRU</b></span></p></div>
-        </div>
-        {/* 6. AREA KIDS (Pos 6: R2, C3) */}
-        <div id="e_aeroporto_6_caixa" className="gpc-e e_caixa dd dm e_aeroporto_6_caixa"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_aeroporto_6_texto" className="gpc-e e_texto dd dm e_aeroporto_6_texto">
-          <div className="c e_texto"><p><span><b>AREA KIDS</b></span></p></div>
-        </div>
-
         {/* BOXES - CAÇARI */}
-        <div id="e_3536911_1_177341095061067093" className="gpc-e e_caixa dd dm e_3536911_1_177341095061067093"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341095061056193" className="gpc-e e_texto dd dm e_3536911_1_177341095061056193"><div className="c e_texto"><p><span><b>PIZZARIA</b></span></p></div></div>
-        <div id="e_3536911_1_177341095061068863" className="gpc-e e_caixa dd dm e_3536911_1_177341095061068863"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341095061081284" className="gpc-e e_texto dd dm e_3536911_1_177341095061081284"><div className="c e_texto"><p><span>ESTACIONAMENTO</span></p></div></div>
-        <div id="e_3536911_1_177341095061081912" className="gpc-e e_caixa dd dm e_3536911_1_177341095061081912"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341095061010865" className="gpc-e e_texto dd dm e_3536911_1_177341095061010865"><div className="c e_texto"><p><span><b>DELIVERY</b></span></p></div></div>
-
-        <div id="e_cacari_4_caixa" className="gpc-e e_caixa dd dm e_cacari_4_caixa"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_cacari_4_texto" className="gpc-e e_texto dd dm e_cacari_4_texto"><div className="c e_texto"><p><span><b>ÁREA KIDS</b></span></p></div></div>
+        <div id="e_3536911_1_177341095061067093" className="gpc-e e_caixa dd dm e_3536911_1_177341095061067093 clickable" onClick={() => openHoursModal('cacari', 'pizzaria')}><div className="c borda_igual e_caixa"></div></div>
+        <div id="e_3536911_1_177341095061056193" className="gpc-e e_texto dd dm e_3536911_1_177341095061056193 clickable" onClick={() => openHoursModal('cacari', 'pizzaria')}><div className="c e_texto"><p><span><b>PIZZARIA</b></span></p></div></div>
 
         {/* BOXES - APARECIDA */}
-        <div id="e_3536911_1_177341095480062151" className="gpc-e e_caixa dd dm e_3536911_1_177341095480062151"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341095480018946" className="gpc-e e_texto dd dm e_3536911_1_177341095480018946"><div className="c e_texto"><p><span><b>GELATERIA</b></span></p></div></div>
-        <div id="e_3536911_1_177341095480046249" className="gpc-e e_caixa dd dm e_3536911_1_177341095480046249"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341095480008896" className="gpc-e e_texto dd dm e_3536911_1_177341095480008896"><div className="c e_texto"><p><span>ÁREA KIDS</span></p></div></div>
-        <div id="e_3536911_1_177341095480066631" className="gpc-e e_caixa dd dm e_3536911_1_177341095480066631"><div className="c borda_igual e_caixa"></div></div>
-        <div id="e_3536911_1_177341095480007674" className="gpc-e e_texto dd dm e_3536911_1_177341095480007674"><div className="c e_texto"><p><span>DELIVERY</span></p></div></div>
+        <div id="e_3536911_1_177341095480062151" className="gpc-e e_caixa dd dm e_3536911_1_177341095480062151 clickable" onClick={() => openHoursModal('aparecida', 'gelateria')}><div className="c borda_igual e_caixa"></div></div>
+        <div id="e_3536911_1_177341095480018946" className="gpc-e e_texto dd dm e_3536911_1_177341095480018946 clickable" onClick={() => openHoursModal('aparecida', 'gelateria')}><div className="c e_texto"><p><span><b>GELATERIA</b></span></p></div></div>
 
         {/* Schedules and Buttons */}
-        <div id="e_3536911_1_177341063804326646" className="gpc-e e_texto dd dm e_3536911_1_177341063804326646"><div className="c e_texto"><p><span>Todos os dias</span></p></div></div>
-        <div id="e_3536911_1_177341095480072858" className="gpc-e e_texto dd dm e_3536911_1_177341095480072858"><div className="c e_texto"><p><span>Todos os dias</span></p></div></div>
-        <div id="e_3536911_1_177341095061016397" className="gpc-e e_texto dd dm e_3536911_1_177341095061016397">
-          <div className="c e_texto"><p><span>Seg – Sex:</span><span> a partir das 17h45<br /></span><span>Sáb – Dom:</span><span> horário especial<br />Entrega: 30–40 min</span></p></div>
-        </div>
-        <div id="e_3536911_1_177341066573293364" className="gpc-e e_texto dd dm e_3536911_1_177341066573293364">
-          <div className="c e_texto"><p><span>Gelateria: 11h30 – 23h<br />Restaurante: Seg – Sab: 11:15 – 14:15<br />Pizzaria: 18h – 23h</span></p></div>
-        </div>
         <div id="e_3536911_1_177341095480012793" className="gpc-e e_texto dd dm e_3536911_1_177341095480012793">
-          <div className="c e_texto"><p><span>11h30 – 23h00<br />Entrega: 40 min<br /></span></p></div>
         </div>
 
         <div id="e_3536911_1_177341072861382619" className="gpc-e e_botao dd dm e_3536911_1_177341072861382619">
@@ -176,7 +220,7 @@ export default function Locations() {
           <button className="c borda_igual e_botao link_externo" onClick={() => openModal('aparecida')}>FAZER PEDIDO →</button>
         </div>
       </div>
-      {/* Interactive Modal */}
+      {/* Interactive Order Modal */}
       {isModalOpen && selectedUnit && (
         <div className="location-modal-overlay" onClick={closeModal}>
           <div className="location-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -192,18 +236,42 @@ export default function Locations() {
                 🍕 Fazer Pedido Online
               </a>
 
-              {selectedUnit.hasPizzaria && (
+              {selectedUnit.hasPizzaria && selectedUnit.whatsappPizzaria && (
                 <a href={selectedUnit.whatsappPizzaria} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
                   📱 WhatsApp - Pizzaria
                 </a>
               )}
 
-              {selectedUnit.hasGelateria && (
+              {selectedUnit.hasGelateria && selectedUnit.whatsappGelateria && (
                 <a href={selectedUnit.whatsappGelateria} target="_blank" rel="noopener noreferrer" className="location-modal-btn">
                   🍦 WhatsApp - Gelateria
                 </a>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Business Hours Modal */}
+      {isHoursModalOpen && hoursData && (
+        <div className="location-modal-overlay" onClick={closeHoursModal}>
+          <div className="location-modal-content hours-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="location-modal-close" onClick={closeHoursModal}>&times;</button>
+            <h3 className="location-modal-title">{hoursData.title}</h3>
+            <p className="location-modal-subtitle">Horários de Funcionamento</p>
+            
+            <div className="hours-list">
+              {hoursData.items.map((item, idx) => (
+                <div key={idx} className="hours-row">
+                  <span className="hours-label">{item.label}</span>
+                  <span className="hours-time">{item.time}</span>
+                </div>
+              ))}
+            </div>
+            
+            <button className="location-modal-btn hours-close-btn" onClick={closeHoursModal}>
+              FECHAR
+            </button>
           </div>
         </div>
       )}

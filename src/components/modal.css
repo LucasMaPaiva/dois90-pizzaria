@@ -156,3 +156,109 @@ button.product-cta {
     text-align: left !important;
   }
 }
+
+/* New Enhancements */
+.clickable {
+  cursor: pointer !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.clickable:hover {
+  filter: brightness(1.3);
+  transform: translateY(-2px);
+}
+
+/* Fix centering for text elements without breaking heights */
+.clickable.e_texto .c {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.clickable.e_texto p, 
+.clickable.e_texto span,
+.clickable.e_texto b {
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+
+/* Specific fix for RESTAURANTE and other buttons */
+#e_3536911_1_177341050297651173, /* Pizzaria Text Aeroporto */
+#e_3536911_1_177341056214731717, /* Restaurante Text Aeroporto */
+#e_3536911_1_177341058195840414, /* Gelateria Text Aeroporto */
+#e_3536911_1_177341095061056193, /* Pizzaria Text Caçari */
+#e_3536911_1_177341095480018946  /* Gelateria Text Aparecida */ {
+  width: 110px !important; /* Slightly wider to accommodate RESTAURANTE */
+  margin-left: -5px !important; /* Align with the background boxes */
+}
+
+.services-list {
+  display: flex;
+  flex-wrap: nowrap !important; /* Force single line */
+  gap: 4px;
+  justify-content: flex-start;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 7.5px;
+  color: #c79a54 !important;
+  letter-spacing: 1px !important; /* Reduce letter spacing to fit more text */
+}
+
+.services-list b, 
+.services-list span {
+  color: #c79a54 !important;
+}
+
+@media (max-width: 1024px) {
+  .services-list {
+    justify-content: center;
+    font-size: 10px;
+  }
+}
+
+.hours-modal {
+  width: 400px !important;
+  padding: 30px !important;
+}
+
+.hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0 30px 0;
+  text-align: left;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(199, 154, 84, 0.2);
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+}
+
+.hours-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 14px;
+}
+
+.hours-time {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(199, 154, 84);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hours-close-btn {
+  width: 100%;
+  margin-top: 10px;
+}
