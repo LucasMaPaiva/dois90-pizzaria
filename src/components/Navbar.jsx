@@ -54,7 +54,7 @@ const Navbar = () => {
 
           <div className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <button onClick={() => handleNavClick('panel-pizzaria')}>CARDÁPIO</button>
-            <button onClick={() => handleNavClick('b_3536911_1_177340533469b404961c771')}>UNIDADES</button>
+            <button onClick={() => handleNavClick('visit-us')}>UNIDADES</button>
             <button onClick={() => { setIsMobileMenuOpen(false); navigate('/quem-somos'); }}>QUEM SOMOS</button>
             <button onClick={() => handleNavClick('b_3536911_1_177341229844636594')}>PROMOÇÃO</button>
             <button onClick={() => setIsModalOpen(true)} className="nav-cta">PEDIR AGORA</button>

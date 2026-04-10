@@ -27,7 +27,7 @@ const Footer = () => {
             <li><button onClick={() => scrollToSection('panel-pizzaria')}>Pizzaria</button></li>
             <li><button onClick={() => scrollToSection('panel-restaurante')}>Restaurante</button></li>
             <li><button onClick={() => scrollToSection('panel-gelateria')}>Gelateria</button></li>
-            <li><button onClick={() => scrollToSection('b_3536911_1_177340533469b404961c771')}>Nossas Unidades</button></li>
+            <li><button onClick={() => scrollToSection('visit-us')}>Nossas Unidades</button></li>
             <li><button onClick={() => scrollToSection('b_3536911_1_177341229844636594')}>Promoção</button></li>
           </ul>
         </div>
