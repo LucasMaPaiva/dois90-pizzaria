@@ -8,7 +8,7 @@ const unitsData = [
     name: "Aeroporto",
     address: "R. Yeyê Coelho, 580A - Aeroporto",
     maps: "https://www.google.com/maps/dir//pizzaria+dois90+-+R.+Yey%C3%AA+Coelho,+580A+-+Aeroporto,+Boa+Vista+-+RR,+69310-118",
-    order: "https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa",
+    order: "https://pigz.com.br/dois90pizzaria",
     whatsapp: "https://wa.me/559591520290",
     image: "/units/aeroporto-pizzaria.jpeg",
     amenities: [

@@ -15,12 +15,12 @@ const OrderModal = ({ isOpen, onClose, type = 'all' }) => {
           {/* Aeroporto - Pizzaria, Gelateria, Restaurante */}
           {(type === 'all' || type === 'pizzaria' || type === 'gelateria' || type === 'restaurante') && (
             <a 
-              href="https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+              href="https://pigz.com.br/dois90pizzaria"
+              target="_blank"
+              rel="noopener noreferrer"
               className="location-modal-btn"
             >
-              Dois90 Aeroporto (Anota AI)
+              Dois90 Aeroporto (Pigz)
             </a>
           )}
 
