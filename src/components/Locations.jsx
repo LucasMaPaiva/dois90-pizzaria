@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./modal.css";
 import "./Locations.css";
+import OrderModal from "./OrderModal";
 
 const unitsData = [
   {
@@ -97,6 +98,7 @@ const unitsData = [
 export default function Locations() {
   const [selectedSector, setSelectedSector] = useState(null);
   const [activeUnit, setActiveUnit] = useState(null);
+  const [orderModalOpen, setOrderModalOpen] = useState(false);
 
   const openHoursModal = (unit, sector) => {
     setActiveUnit(unit);
@@ -153,9 +155,15 @@ export default function Locations() {
               </div>
 
               <div className="location-actions">
-                <a href={unit.order} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  FAZER PEDIDO
-                </a>
+                {unit.id === 'aeroporto' ? (
+                  <button className="btn-primary" onClick={() => setOrderModalOpen(true)}>
+                    FAZER PEDIDO
+                  </button>
+                ) : (
+                  <a href={unit.order} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                    FAZER PEDIDO
+                  </a>
+                )}
                 <a href={unit.maps} target="_blank" rel="noopener noreferrer" className="btn-secondary">
                   COMO CHEGAR
                 </a>
@@ -164,6 +172,12 @@ export default function Locations() {
           ))}
         </div>
       </div>
+
+      <OrderModal
+        isOpen={orderModalOpen}
+        onClose={() => setOrderModalOpen(false)}
+        type="aeroporto"
+      />
 
       {/* Hours Modal */}
       {selectedSector && activeUnit && (
