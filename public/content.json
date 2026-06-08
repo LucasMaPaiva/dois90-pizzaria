@@ -303,7 +303,7 @@
       },
       {
         "id": "restaurante",
-        "label": "🍽️ RESTAURANTE",
+        "label": "🍽️ Restaurante",
         "orderType": "restaurante",
         "subcategories": [
           {
@@ -531,7 +531,7 @@
           },
           {
             "id": "milk",
-            "label": "MILKSHAKES",
+            "label": "Milkshakes",
             "items": [
               {
                 "id": "milk1",
@@ -610,7 +610,7 @@
   },
   "hero": {
     "tagline": "DESDE 1999 · BOA VISTA, RORAIMA",
-    "title": "Teste de alter muito mais sabor",
+    "title": "Seu testes com muito mais sabor",
     "subtitle": "Há 25 anos criando memórias e refeições com ingredientes artesanais, receitas italianas clássicas, feitas com amor para marcar gerações.",
     "ctaPrimary": "MONTAR MEU PEDIDO",
     "ctaSecondary": "CONHEÇA A DOIS90",
