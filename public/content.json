@@ -7,7 +7,7 @@
     "categories": [
       {
         "id": "pizzaria",
-        "label": "🍕 Pizzaria & Massas",
+        "label": "🍕 TESTE & MASSAS",
         "orderType": "pizzaria",
         "subcategories": [
           {
@@ -303,7 +303,7 @@
       },
       {
         "id": "restaurante",
-        "label": "🍽️ Restaurante",
+        "label": "🍽️ RESTAURANTE",
         "orderType": "restaurante",
         "subcategories": [
           {
@@ -435,7 +435,7 @@
       },
       {
         "id": "gelateria",
-        "label": "🍦 Gelateria & Sobremesas",
+        "label": "🍦 GELATERIA & SOBREMESAS",
         "orderType": "gelateria",
         "subcategories": [
           {
@@ -601,6 +601,24 @@
                 "id": "cap1",
                 "name": "Cappuccino com Chantilly",
                 "desc": "Cappuccino cremoso com chantilly frescinho."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cat_1780897848257",
+        "label": "Testes",
+        "orderType": "pizzaria",
+        "subcategories": [
+          {
+            "id": "sub_1780897848257",
+            "label": "Geral",
+            "items": [
+              {
+                "id": "item_1780897857156",
+                "name": "testes",
+                "desc": "testes"
               }
             ]
           }
