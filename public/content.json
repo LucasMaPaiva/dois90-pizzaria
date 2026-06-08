@@ -7,7 +7,7 @@
     "categories": [
       {
         "id": "pizzaria",
-        "label": "🍕 TESTE & MASSAS",
+        "label": "🍕 Pizzaria & Massas",
         "orderType": "pizzaria",
         "subcategories": [
           {
@@ -303,7 +303,7 @@
       },
       {
         "id": "restaurante",
-        "label": "🍽️ RESTAURANTE",
+        "label": "🍽️ Restaurante",
         "orderType": "restaurante",
         "subcategories": [
           {
@@ -435,7 +435,7 @@
       },
       {
         "id": "gelateria",
-        "label": "🍦 GELATERIA & SOBREMESAS",
+        "label": "🍦 Gelateria & Sobremesas",
         "orderType": "gelateria",
         "subcategories": [
           {
@@ -605,30 +605,12 @@
             ]
           }
         ]
-      },
-      {
-        "id": "cat_1780897848257",
-        "label": "Testes",
-        "orderType": "pizzaria",
-        "subcategories": [
-          {
-            "id": "sub_1780897848257",
-            "label": "Geral",
-            "items": [
-              {
-                "id": "item_1780897857156",
-                "name": "testes",
-                "desc": "testes"
-              }
-            ]
-          }
-        ]
       }
     ]
   },
   "hero": {
     "tagline": "DESDE 1999 · BOA VISTA, RORAIMA",
-    "title": "Seu testes com muito mais sabor",
+    "title": "Seu teste com muito mais sabor",
     "subtitle": "Há 25 anos criando memórias e refeições com ingredientes artesanais, receitas italianas clássicas, feitas com amor para marcar gerações.",
     "ctaPrimary": "MONTAR MEU PEDIDO",
     "ctaSecondary": "CONHEÇA A DOIS90",
