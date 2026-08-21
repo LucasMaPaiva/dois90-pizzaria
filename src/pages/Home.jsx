@@ -85,7 +85,7 @@ const Home = () => {
       <ComboAeroporto />
       {/* <WhatsAppPromo /> */}
       <Locations />
-      <PromoImage />
+      {/* <PromoImage /> */}
       <SocialGallery />
       <Footer />
     </div>
