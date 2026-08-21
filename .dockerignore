@@ -1,0 +1,21 @@
+# Segredos - nunca entram no contexto de build
+.env
+.env.*
+
+# Dependencias e artefatos (reconstruidos no build stage)
+node_modules
+dist
+dist-ssr
+
+# Controle de versao e IDE
+.git
+.gitignore
+.idea
+.vscode
+
+# Logs e diversos
+*.log
+npm-debug.log*
+.DS_Store
+diff.txt
+README.md
