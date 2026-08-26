@@ -43,7 +43,19 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p>&copy; 2026 Dois90. Todos os direitos reservados.</p>
+          <div className="footer-bottom-left">
+            <p>&copy; 2026 Dois90. Todos os direitos reservados.</p>
+            <p className="footer-credit">
+              Feito por{' '}
+              <a
+                href="https://inicialtecnologia.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Inicial Inovações Tecnológicas
+              </a>
+            </p>
+          </div>
           <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             Retornar ao Topo <span className="arrow">↑</span>
           </button>

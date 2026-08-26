@@ -1,0 +1,423 @@
+/* Painel de edicao — estilo utilitario, independente da identidade do site. */
+
+.adm-shell {
+  --adm-bg: #f4f5f7;
+  --adm-surface: #ffffff;
+  --adm-border: #dcdfe4;
+  --adm-text: #1c1f23;
+  --adm-muted: #6b7280;
+  --adm-accent: #c79a52;
+  --adm-danger: #b42318;
+  --adm-ok: #157347;
+
+  height: 100vh;
+  overflow-y: auto;
+  background: var(--adm-bg);
+  color: var(--adm-text);
+  font-family: 'Montserrat', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 14px;
+  padding-bottom: 88px;
+}
+
+/* --- Topbar --- */
+.adm-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: #101215;
+  color: #fff;
+}
+
+.adm-topbar-left,
+.adm-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adm-topbar-logo { height: 30px; }
+
+.adm-topbar-title {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* --- Abas --- */
+.adm-tabs {
+  position: sticky;
+  top: 58px;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+  padding: 0 20px;
+  background: var(--adm-surface);
+  border-bottom: 1px solid var(--adm-border);
+  overflow-x: auto;
+}
+
+.adm-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 18px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  color: var(--adm-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.adm-tab:hover { color: var(--adm-text); }
+
+.adm-tab.active {
+  color: var(--adm-text);
+  border-bottom-color: var(--adm-accent);
+}
+
+.adm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--adm-accent);
+}
+
+/* --- Conteudo --- */
+.adm-main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.adm-section { display: flex; flex-direction: column; gap: 16px; }
+
+.adm-section-note {
+  background: #fff8e8;
+  border: 1px solid #f0dcae;
+  border-radius: 6px;
+  padding: 12px 14px;
+  color: #6b5620;
+  line-height: 1.55;
+}
+
+.adm-h3 {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.adm-h4 {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--adm-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.adm-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+/* --- Campos --- */
+.adm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.adm-label {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.adm-field input,
+.adm-field textarea,
+.adm-hour-row input,
+.adm-login-card input {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--adm-border);
+  border-radius: 6px;
+  background: var(--adm-surface);
+  font: inherit;
+  color: inherit;
+}
+
+.adm-field input:focus,
+.adm-field textarea:focus,
+.adm-hour-row input:focus,
+.adm-login-card input:focus {
+  outline: 2px solid var(--adm-accent);
+  outline-offset: -1px;
+  border-color: var(--adm-accent);
+}
+
+.adm-field textarea { resize: vertical; }
+
+.adm-hint {
+  font-size: 12px;
+  color: var(--adm-muted);
+}
+
+/* --- Blocos recolhiveis --- */
+.adm-collapsible {
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.adm-collapsible > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.adm-collapsible > summary::-webkit-details-marker { display: none; }
+
+.adm-collapsible > summary::before {
+  content: '▸';
+  color: var(--adm-muted);
+  transition: transform 0.15s;
+}
+
+.adm-collapsible[open] > summary::before { transform: rotate(90deg); }
+
+.adm-collapsible[open] > summary { border-bottom: 1px solid var(--adm-border); }
+
+.adm-collapsible-sub {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--adm-muted);
+}
+
+.adm-count {
+  margin-left: auto;
+  background: #eef0f3;
+  color: var(--adm-muted);
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.adm-collapsible-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 15px;
+}
+
+/* --- Itens do cardapio --- */
+.adm-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.adm-item {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 13px;
+  background: #fafbfc;
+  border: 1px solid var(--adm-border);
+  border-radius: 7px;
+}
+
+.adm-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.adm-item-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.adm-item-actions button,
+.adm-icon-btn {
+  padding: 5px 9px;
+  border: 1px solid var(--adm-border);
+  border-radius: 5px;
+  background: var(--adm-surface);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.adm-item-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.adm-danger {
+  color: var(--adm-danger);
+  border-color: #e8b4af !important;
+}
+
+.adm-danger:hover { background: #fdf1f0; }
+
+/* --- Horarios das unidades --- */
+.adm-sector {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 13px;
+  background: #fafbfc;
+  border: 1px solid var(--adm-border);
+  border-radius: 7px;
+}
+
+.adm-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adm-hour-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+/* --- Botoes --- */
+.adm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.adm-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.adm-btn-primary {
+  background: var(--adm-accent);
+  color: #16130c;
+}
+
+.adm-btn-primary:not(:disabled):hover { background: #b98a44; }
+
+.adm-btn-ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+
+.adm-btn-ghost:not(:disabled):hover { background: rgba(0, 0, 0, 0.06); }
+
+.adm-topbar .adm-btn-ghost { color: #fff; }
+.adm-topbar .adm-btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* --- Barra de salvar (fixa) --- */
+.adm-savebar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 13px 20px;
+  background: var(--adm-surface);
+  border-top: 1px solid var(--adm-border);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.adm-savebar-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.adm-muted { color: var(--adm-muted); }
+
+.adm-feedback { font-weight: 600; }
+.adm-feedback.ok { color: var(--adm-ok); }
+.adm-feedback.error { color: var(--adm-danger); }
+
+.adm-error {
+  color: var(--adm-danger);
+  font-weight: 600;
+}
+
+/* --- Login --- */
+.adm-login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #101215;
+  font-family: 'Montserrat', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.adm-login-card {
+  --adm-border: #dcdfe4;
+  --adm-accent: #c79a52;
+  --adm-muted: #6b7280;
+  --adm-danger: #b42318;
+  --adm-surface: #fff;
+
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 30px 26px;
+  background: #fff;
+  border-radius: 10px;
+  color: #1c1f23;
+  text-align: center;
+}
+
+.adm-login-logo {
+  height: 44px;
+  margin: 0 auto;
+}
+
+.adm-login-card h1 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.adm-login-hint {
+  font-size: 13px;
+  color: var(--adm-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .adm-hour-row { grid-template-columns: 1fr auto; }
+  .adm-savebar { flex-direction: column; align-items: stretch; }
+  .adm-savebar-actions { margin-left: 0; }
+  .adm-savebar-actions .adm-btn { flex: 1; }
+}

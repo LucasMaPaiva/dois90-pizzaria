@@ -1,12 +1,13 @@
 # Painel de Edição — Dois90 Pizzaria
 
+> Guia do cliente (como usar o painel no dia a dia): **[COMO-EDITAR.md](./COMO-EDITAR.md)**
+
 ## Por que estamos fazendo isso
 
-Hoje o site da Dois90 é 100% estático: cardápio, preços de exibição, descrições,
-horários de cada unidade e textos do início ficam hardcoded direto no código
-(`src/components/Menu.jsx`, `Hero.jsx`, `Locations.jsx`). Toda vez que uma pizza
-muda de nome, uma unidade ajusta o horário de funcionamento ou um link de pedido
-muda, é preciso mexer em código e fazer novo deploy.
+Hoje o site da Dois90 é 100% estático: cardápio, descrições, horários de cada
+unidade e textos do início ficam hardcoded direto no código. Toda vez que uma
+pizza muda de nome, uma unidade ajusta o horário de funcionamento ou um link de
+pedido muda, é preciso mexer em código e fazer novo deploy.
 
 A ideia é dar ao cliente (dono da pizzaria) um jeito de editar esse conteúdo
 sozinho, sem depender de programador — com login simples, protegido por senha —
@@ -15,116 +16,194 @@ e depois gravar um vídeo tutorial ensinando ele a usar.
 Vamos começar pela **Dois90** e, depois de validado, replicar o mesmo padrão pro
 **Apiário Costa**.
 
-## Decisões já tomadas
+## Decisões tomadas
 
 - **Persistência em SQLite embutido** (arquivo único, sem servidor de banco
-  separado) — guardado como *document store* simples: uma tabela
+  separado), guardado como *document store* simples: tabela
   `content(section, data, updated_at)` com uma linha por seção (`menu`, `hero`,
   `locations`), cada uma guardando o JSON daquela seção. Evita modelar pizza/
-  unidade como linhas relacionais (schema instável) mas ainda persiste de
-  verdade entre deploys, via volume Docker nomeado.
+  unidade como linhas relacionais (schema instável) mas persiste de verdade
+  entre deploys, via volume Docker nomeado.
 - **Login único via senha em `.env`** (`ADMIN_PASSWORD` + `JWT_SECRET`), sem
-  necessidade de múltiplos usuários por enquanto.
-- **Backend novo**: serviço Docker `api` (Node/Express) rodando ao lado do `app`
-  (nginx) já existente, no mesmo `docker-compose.yml`. O nginx faz proxy de
-  `/api/*` pro serviço `api` — não precisa de rede externa nem do Nginx Proxy
-  Manager pra essa comunicação interna.
+  múltiplos usuários. Sessão em cookie `httpOnly` assinado com JWT, 12h.
+- **Backend novo**: serviço Docker `api` (Node/Express) ao lado do `app`
+  (nginx), no mesmo `docker-compose.yml`. O nginx faz proxy de `/api/*` pro
+  serviço `api` — comunicação interna da rede do Docker, não passa pelo Nginx
+  Proxy Manager.
 - **Escopo v1 do que é editável**: cardápio (nome/descrição/selo de cada item),
   unidades (endereço, links de pedido/maps/WhatsApp, horários por setor) e
-  textos do Início (tagline, título, subtítulo, botões). Upload de imagem pelo
-  painel fica pra uma fase 2 — hoje as imagens continuam sendo arquivos
-  estáticos versionados no código.
+  textos do Início. Upload de imagem pelo painel fica pra fase 2 — as imagens
+  continuam arquivos estáticos versionados no código.
 
-## O que já existia no repo antes de começar (achado numa investigação de branches)
+### ⚠️ Por que o segredo NÃO pode ficar no frontend
+
+Uma tentativa anterior (branch `feature/admin-cms`, abandonada) resolvia a
+persistência commitando o `content.json` direto no GitHub pela API, usando um
+Personal Access Token, e validava a senha comparando com
+`import.meta.env.VITE_ADMIN_PASSWORD` no navegador.
+
+Variáveis `VITE_*` são **embutidas em texto claro no bundle**: qualquer visitante
+que abrisse o JS do site leria a senha do admin e um token com permissão de
+escrita no repositório. É por isso que a autenticação vive no backend aqui, e
+por isso o `.env.example` avisa para nunca prefixar segredo com `VITE_`.
+
+## O que já existia no repo antes de começar
 
 Em `origin/main` havia um `public/content.json` órfão com o cardápio/hero/
-unidades já extraídos pra JSON, mas **nenhum componente lia esse arquivo** — foi
-aparentemente preparado por uma sessão anterior mas nunca ligado a nada. Havia
-também 4 commits "chore: atualiza conteúdo via admin", mas eram edições manuais
-diretas nesse JSON (não vinham de um painel funcionando) — não existe nenhum
-login, backend ou UI de edição em nenhuma branch. Aproveitamos o *schema* já
-desenhado nesse `content.json` (ele já cobre `menu`, `hero`, `locations` e ainda
-`socialGallery`, `footer`, `orderModal`, `videos` de forma limpa) como ponto de
-partida dos dados.
+unidades já extraídos pra JSON, mas **nenhum componente lia esse arquivo**.
+Aproveitamos o *schema* já desenhado nele como ponto de partida dos dados
+(`server/seed.json`) e ele segue no repo como **fallback**: se a API estiver
+fora, o site público carrega dele em vez de aparecer vazio.
 
-## ⚠️ Importante: crédito da Inicial no footer
+Também havia 4 commits "chore: atualiza conteúdo via admin" — eram edições
+manuais diretas nesse JSON, não vinham de um painel funcionando.
 
-**Antes de finalizar essa mudança**, adicionar no footer do site da Dois90 (e do
-Apiário Costa, quando replicarmos lá) um crédito de desenvolvimento — algo como
-*"Feito por Inicial Inovações Tecnológicas"* com link pro nosso site
-(`https://inicialtecnologia.com.br/`), igual muita agência faz no rodapé dos
-sites que entrega. Isso não estava no escopo original desse painel, mas é uma
-alteração pequena que deve entrar junto — não esquecer.
+## Como está implementado
 
-## O que já foi feito (código, ainda não commitado)
+### Backend — `server/`
 
-- `server/`: backend Express novo (`index.js`, `db.js`, `package.json`,
-  `Dockerfile`, `.dockerignore`) com as rotas:
-  - `GET /api/content` (público) — retorna todas as seções salvas no SQLite.
-  - `POST /api/auth/login`, `GET /api/auth/me`, `POST /api/auth/logout`.
-  - `PUT /api/content/:section` (protegido, `section` ∈ `menu|hero|locations`).
-  - `GET /api/health`.
-  - `server/seed.json` — cópia do `content.json` existente, usada pra popular o
-    banco na primeira subida (se a tabela estiver vazia).
-- `docker-compose.yml` — novo serviço `api` (build a partir de `./server`),
-  volume nomeado `dois90-db-data:/data` pra persistir o SQLite entre deploys,
-  `app` com `depends_on: [api]`.
-- `.docker/nginx.conf` — bloco `location /api/` fazendo proxy pro serviço `api`.
-- `.env.example` — com `ADMIN_PASSWORD` e `JWT_SECRET` de exemplo.
-- `src/context/ContentContext.jsx` — busca `GET /api/content` uma vez e
-  disponibiliza pros componentes via `useContent()`.
-- `src/components/Menu.jsx` — **reescrito do zero**: era ~1600 linhas de JSX
-  hardcoded/legado de um landing-page-builder antigo (com funções globais
-  `window.switchMain`/`switchSub`); virou um componente limpo de ~120 linhas,
-  orientado a dados, usando estado React normal pra trocar categoria/
-  subcategoria. Mantive as mesmas classes CSS (`main-tab`, `product-card` etc.)
-  pra não quebrar o visual.
-- `src/components/Hero.jsx` e `src/components/Locations.jsx` — mesma ideia,
-  agora buscam os textos/unidades do `content` em vez de hardcoded.
-- `src/App.jsx` — envolvido com `ContentProvider`; nova rota `/admin/*`
-  (`react-router-dom` já estava instalado, não precisou migração de router).
+| Arquivo | Papel |
+|---|---|
+| `index.js` | Rotas Express, auth JWT, rate limit do login |
+| `db.js` | SQLite (better-sqlite3), schema, seed idempotente |
+| `seed.json` | Conteúdo inicial das 3 seções (cópia do `content.json`) |
+| `Dockerfile` | `node:20-bookworm-slim` (usa prebuild do better-sqlite3) |
 
-## O que falta fazer
+Rotas:
 
-1. **Footer com crédito da Inicial** (ver seção acima — não esquecer).
-2. `src/admin/AdminApp.jsx` — router interno do painel (`/admin/login` e
-   `/admin`), usando um hook `useAdminAuth` (checa `GET /api/auth/me`) pra
-   decidir se mostra login ou dashboard.
-3. `src/admin/Dashboard.jsx` — abas "Cardápio", "Unidades", "Início", botão de
-   sair e link "Ver site".
-4. `src/admin/LocationsEditor.jsx` — formulário por unidade (endereço, links de
-   maps/pedido/WhatsApp) + lista editável de horários por setor (adicionar/
-   remover linha de horário). Segue o mesmo padrão do `MenuEditor.jsx` e
-   `HeroEditor.jsx` já feitos.
-5. `src/admin/Admin.css` — estilo simples e utilitário pro painel (não precisa
-   seguir a identidade visual do site público, só ser limpo e usável).
-6. Já feitos como referência de padrão: `src/admin/Login.jsx`,
-   `src/admin/HeroEditor.jsx`, `src/admin/MenuEditor.jsx`, `src/admin/api.js`
-   (`saveSection`), `src/admin/useAdminAuth.js`.
-7. **Testar de ponta a ponta**: `docker compose up -d --build` local, conferir
-   que os dois containers sobem saudáveis, que o site carrega cardápio/
-   unidades/hero via API (visual idêntico ao atual), logar em `/admin`, editar
-   algo, salvar, recarregar a home e confirmar a mudança. Depois
-   `docker compose down && up -d --build` de novo pra confirmar que o volume
-   `dois90-db-data` mantém a edição (prova que persiste entre deploys).
-8. **Roteiro de uso** (pra servir de apoio no vídeo tutorial que o usuário vai
-   gravar pro cliente): passo a passo de como acessar `/admin`, logar, e editar
-   cada seção. Pode ser a segunda metade deste mesmo documento ou um arquivo
-   separado (`docs/COMO-EDITAR.md`), decidir na hora.
-9. Depois de validado na Dois90: replicar o mesmo padrão (server/, docker-
-   compose, nginx, admin/) no **Apiário Costa**.
+- `GET /api/health` — usada pelo healthcheck do compose.
+- `GET /api/content` — **pública**, retorna as 3 seções. O site inteiro lê daqui.
+- `POST /api/auth/login` — compara a senha em tempo constante, devolve cookie
+  `httpOnly` + `sameSite=strict`. Rate limit: 8 tentativas / 10 min por IP.
+- `GET /api/auth/me` — valida a sessão.
+- `POST /api/auth/logout` — limpa o cookie.
+- `PUT /api/content/:section` — **protegido**, `section` ∈ `menu|hero|locations`.
 
-## Arquivos alterados até agora (não commitados)
+O seed **nunca sobrescreve** uma seção que já existe no banco — só popula o que
+está faltando. Por isso subir de novo não desfaz edição do cliente.
 
+### Infra
+
+- `docker-compose.yml` — serviço `api` com volume nomeado
+  `dois90-db-data:/data`, `app` com `depends_on: [api]`, healthcheck nos dois.
+- `.docker/nginx.conf` — bloco `location /api/` com `proxy_pass http://api:3001`
+  e `Cache-Control: no-store`.
+- `.env.example` — `ADMIN_PASSWORD` e `JWT_SECRET`, com o aviso sobre `VITE_`.
+- `vite.config.js` — proxy `/api` → `localhost:3001` para o `npm run dev`.
+
+### Frontend público
+
+- `src/context/ContentContext.jsx` — busca `GET /api/content` uma vez e expõe
+  via `useContent()`. Se a API falhar, cai para `/content.json`.
+- `src/components/Menu.jsx` — **reescrito**: eram ~1600 linhas de JSX hardcoded
+  de um landing-page-builder antigo; virou ~130 linhas orientadas a dados.
+  As mesmas classes CSS foram mantidas, então o visual é idêntico.
+- `src/components/Hero.jsx` e `Locations.jsx` — mesma ideia.
+- `src/components/Footer.jsx` — crédito "Feito por Inicial Inovações
+  Tecnológicas" com link pro nosso site.
+- `src/App.jsx` — envolvido com `ContentProvider`; rota `/admin/*`.
+
+#### Como a troca de abas mudou
+
+O `Menu.jsx` antigo chamava `window.switchMain(...)` / `window.switchSub(...)`
+nos `onClick`. Essas funções eram definidas num `useEffect` do
+`src/pages/Home.jsx` e mexiam nas classes `.active` direto no DOM — por fora do
+React. Funcionava, mas era frágil: a função tinha a lista de categorias
+hardcoded (`["pizzaria", "restaurante", "gelateria"]`), então uma categoria nova
+não trocaria de painel.
+
+A versão nova troca de aba com estado React, sem tocar no DOM e sem lista
+hardcoded.
+
+**Ponto de atenção:** o `useEffect` do `Home.jsx` também fazia uma coisa que a
+versão nova não faz — em telas de até 600px, ele removia todas as classes
+`.active` depois do mount, deixando o cardápio *sem nada pré-selecionado* no
+celular (o cliente precisava tocar numa categoria para ver os produtos). Hoje a
+primeira categoria/subcategoria já vem aberta em qualquer tamanho de tela.
+**Decidir se o comportamento antigo do mobile deve voltar.** As funções
+`window.switchMain`/`switchSub`/`animateCards` no `Home.jsx` ficaram órfãs e
+podem ser removidas junto com essa decisão.
+
+### Painel — `src/admin/`
+
+| Arquivo | Papel |
+|---|---|
+| `AdminApp.jsx` | Router interno (`/admin/login` e `/admin`) |
+| `useAdminAuth.js` | Estado da sessão via `GET /api/auth/me` |
+| `api.js` | Cliente das rotas (`login`, `saveSection`, …) |
+| `Login.jsx` | Tela de senha |
+| `Dashboard.jsx` | Abas, detecção de alteração pendente, publicar/descartar |
+| `MenuEditor.jsx` | Categorias → subcategorias → itens (editar, ordenar, remover, adicionar) |
+| `LocationsEditor.jsx` | Unidade + horários por setor (linhas adicionáveis) |
+| `HeroEditor.jsx` | Textos do início |
+| `fields.jsx` | Campos reutilizados (`TextField`, `TextArea`, `Collapsible`) |
+| `Admin.css` | Estilo utilitário, independente da identidade do site |
+
+O `Dashboard` guarda `saved` (o que está no banco) e `draft` (em edição), compara
+os dois para marcar a aba com alteração pendente, e avisa via `beforeunload` se
+o cliente tentar fechar a aba com alteração não publicada. Cada aba é publicada
+separadamente (um `PUT` por seção).
+
+#### Três ajustes que só apareceram testando no navegador
+
+- **Fonte.** O painel usava `system-ui`, que resolve para uma fonte
+  monoespaçada em algumas máquinas Linux. Trocado por uma pilha ancorada em
+  `Montserrat`, que o site já carrega — previsível em qualquer máquina.
+- **Rolagem ao trocar de aba.** Sair do *Cardápio* (longo) para o *Início*
+  (curto) mantinha a posição de rolagem e o cliente caía no meio da página.
+  Agora o painel volta ao topo a cada troca de aba.
+- **Topbar e abas fixas.** O cardápio é longo e o cliente tinha que rolar tudo
+  de volta para trocar de aba ou clicar em *Sair*. `position: sticky` sozinho
+  não funcionou: o CSS global do site define `body { overflow-y: scroll }`, o
+  que transforma o `body` em scrollport e quebra a sticky. Em vez de mexer no
+  CSS global, o `.adm-shell` virou o próprio container de rolagem
+  (`height: 100vh; overflow-y: auto`) e a rolagem programática usa um ref do
+  shell em vez de `window.scrollTo`.
+
+## Como rodar
+
+```bash
+cp .env.example .env          # e preencher ADMIN_PASSWORD / JWT_SECRET
+docker compose up -d --build
 ```
- M .docker/nginx.conf
- M docker-compose.yml
- M src/App.jsx
- M src/components/Hero.jsx
- M src/components/Locations.jsx
- M src/components/Menu.jsx
-?? .env.example
-?? server/
-?? src/admin/
-?? src/context/
+
+Site em `http://localhost:8080`, painel em `http://localhost:8080/admin`.
+
+Em desenvolvimento, dois terminais:
+
+```bash
+cd server && npm install && ADMIN_PASSWORD=... JWT_SECRET=... npm start
+npm run dev                   # o vite faz proxy de /api pro 3001
 ```
+
+## O que falta
+
+1. Gravar o vídeo tutorial usando o `COMO-EDITAR.md` como roteiro.
+2. Limpar do `.env` as variáveis `VITE_*` que sobraram da abordagem antiga
+   (`VITE_ADMIN_PASSWORD`, `VITE_GITHUB_TOKEN`, `VITE_GITHUB_OWNER`,
+   `VITE_GITHUB_REPO`) — não são mais lidas por nada.
+3. Apagar a branch `feature/admin-cms` depois de confirmar que nada dela é
+   necessário.
+4. Fase 2 (se o cliente pedir): upload de imagem pelo painel — trocar foto de
+   unidade e imagens da galeria.
+5. Depois de validado na Dois90: replicar o padrão (`server/`, compose, nginx,
+   `src/admin/`) no **Apiário Costa**.
+
+## Testes já feitos
+
+- Rotas da API: health, content público, login com senha certa/errada,
+  `me` autenticado e anônimo, `PUT` protegido (401 sem cookie), seção inválida
+  (400), logout, 404 de rota inexistente. ✅
+- Proxy do nginx: `/api/*` chega no serviço `api`, SPA continua servindo
+  `/` e `/admin`, `/content.json` segue acessível como fallback. ✅
+- Persistência: editar → `docker compose down` → `up -d --build` → a edição
+  continua lá e o seed não reaplica (volume `dois90-db-data`). ✅
+- Bundle: `grep` confirma que nenhum segredo e nenhuma variável `VITE_*` vai
+  para o JS do cliente. ✅
+- Visual: hero, cardápio, unidades e rodapé renderizando pela API, idênticos
+  ao anterior; troca de categoria e subcategoria funcionando. ✅
+- Painel no navegador: login, as três abas, expandir categoria →
+  subcategoria → item, editar descrição, marcação de alteração pendente,
+  publicar (o site público refletiu na hora), adicionar e remover linha de
+  horário, voltar ao estado "Tudo salvo" e logout. ✅
+- Lint: 425 erros, exatamente o mesmo baseline de `main` — nenhum novo. ✅

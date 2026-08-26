@@ -1,0 +1,782 @@
+{
+  "menu": {
+    "heading": "O QUE VOCÊ QUER HOJE?",
+    "title": "Escolha agora e",
+    "titleHighlight": "aproveite",
+    "subtitle": "Pizzas artesanais, gelatos italianos, sobremesas e muito mais — tudo feito com ingredientes selecionados.",
+    "categories": [
+      {
+        "id": "pizzaria",
+        "label": "🍕 Pizzaria & Massas",
+        "orderType": "pizzaria",
+        "subcategories": [
+          {
+            "id": "trad",
+            "label": "Tradicionais",
+            "items": [
+              {
+                "id": "cal1",
+                "name": "Calabresa",
+                "desc": "Molho pelati, muçarela, calabresa, cebola e orégano.",
+                "badge": "Mais pedida"
+              },
+              {
+                "id": "por1",
+                "name": "Portuguesa",
+                "desc": "Molho pelati, muçarela, presunto, ovos, cebola, azeitona e orégano."
+              },
+              {
+                "id": "amo1",
+                "name": "À Moda",
+                "desc": "Molho pelati, muçarela, presunto, calabresa, ovos, cebola e orégano."
+              },
+              {
+                "id": "mil1",
+                "name": "Milho e Bacon",
+                "desc": "Molho pelati, muçarela, milho, bacon e orégano."
+              },
+              {
+                "id": "tos1",
+                "name": "Toscana",
+                "desc": "Molho pelati, calabresa, tomate, manjericão, muçarela e orégano."
+              },
+              {
+                "id": "muc1",
+                "name": "Muçarela",
+                "desc": "Molho pelati, muçarela e orégano."
+              }
+            ]
+          },
+          {
+            "id": "espec",
+            "label": "Especialidades",
+            "items": [
+              {
+                "id": "mac1",
+                "name": "Macuxi",
+                "desc": "Molho pelati, carne de sol na manteiga, muçarela e banana frita."
+              },
+              {
+                "id": "frf1",
+                "name": "Filé com Fritas",
+                "desc": "Molho pelati, filé, muçarela, batata frita e orégano."
+              },
+              {
+                "id": "frc1",
+                "name": "Filé com Catupiry",
+                "desc": "Molho pelati, filé grelhado, catupiry, muçarela, cebola roxa e orégano."
+              },
+              {
+                "id": "frp1",
+                "name": "Filé Peperoncino",
+                "desc": "Molho pelati, catupiry, filé com pimentões assados, muçarela, alho, pimenta e orégano."
+              },
+              {
+                "id": "nor1",
+                "name": "Nordestina",
+                "desc": "Molho pelati, catupiry, carne de sol, muçarela, cebola roxa, queijo coalho e biquinho."
+              },
+              {
+                "id": "cam1",
+                "name": "Camarão",
+                "desc": "Molho pelati, catupiry, muçarela, camarão alho e óleo, creme de leite e cebola."
+              }
+            ]
+          },
+          {
+            "id": "prem",
+            "label": "Premium",
+            "items": [
+              {
+                "id": "esp1",
+                "name": "Espanhola c/ Bacon e Catupiry",
+                "desc": "Molho pelati, presunto, calabresa, ovos, muçarela, bacon, cebola, catupiry e orégano."
+              },
+              {
+                "id": "fca1",
+                "name": "Frango com Catupiry",
+                "desc": "Molho pelati, frango, muçarela, catupiry e orégano."
+              },
+              {
+                "id": "bem1",
+                "name": "Bem-querer",
+                "desc": "Molho pelati, catupiry, peito de peru, cebola roxa, muçarela e orégano."
+              },
+              {
+                "id": "ser1",
+                "name": "Serra do Tepequém",
+                "desc": "Molho pelati, muçarela, tomate seco, manjericão e orégano."
+              },
+              {
+                "id": "bai1",
+                "name": "Pizza Baiana",
+                "desc": "Molho pelati, peito de peru, pimenta calabresa, alho poró, muçarela, bacon e orégano."
+              },
+              {
+                "id": "frprem1",
+                "name": "Frango Premium",
+                "desc": "Molho pelati, catupiry, frango, alho frito, pimenta calabresa, muçarela e orégano."
+              }
+            ]
+          },
+          {
+            "id": "especiais",
+            "label": "Especiais",
+            "items": [
+              {
+                "id": "fam1",
+                "name": "Frango ao Molho",
+                "desc": "Molho pelati, frango, muçarela, milho e orégano."
+              },
+              {
+                "id": "espan1",
+                "name": "Espanhola",
+                "desc": "Molho pelati, presunto, calabresa, creme de leite, ovos, muçarela, cebola e orégano."
+              },
+              {
+                "id": "calcat1",
+                "name": "Calabresa com Catupiry",
+                "desc": "Molho pelati, catupiry, calabresa, cebola e orégano."
+              },
+              {
+                "id": "mar1",
+                "name": "Margherita",
+                "desc": "Molho pelati, muçarela, tomate, manjericão e orégano."
+              },
+              {
+                "id": "treq1",
+                "name": "Três Queijos",
+                "desc": "Molho pelati, muçarela, provolone, parmesão e orégano."
+              },
+              {
+                "id": "min1",
+                "name": "Mineira",
+                "desc": "Molho pelati, muçarela, queijo coalho, bacon, fio de mel de abelha."
+              }
+            ]
+          },
+          {
+            "id": "doce",
+            "label": "Doces",
+            "items": [
+              {
+                "id": "ban1",
+                "name": "Banana",
+                "desc": "Banana, trufa de leite ninho, mussarela e canela em pó."
+              },
+              {
+                "id": "mms1",
+                "name": "M&Ms",
+                "desc": "Mussarela, creme de chocolate com avelã e M&M's coloridos."
+              }
+            ]
+          },
+          {
+            "id": "esf",
+            "label": "Esfihas",
+            "items": [
+              {
+                "id": "esfc1",
+                "name": "Carne",
+                "desc": ""
+              },
+              {
+                "id": "esfcal1",
+                "name": "Calabresa",
+                "desc": ""
+              },
+              {
+                "id": "esfcc1",
+                "name": "Carne com Cebola",
+                "desc": ""
+              },
+              {
+                "id": "esfcalc1",
+                "name": "Calabresa com Cebola",
+                "desc": ""
+              },
+              {
+                "id": "esfq1",
+                "name": "Queijo",
+                "desc": ""
+              },
+              {
+                "id": "esfb1",
+                "name": "Bacon",
+                "desc": ""
+              },
+              {
+                "id": "esfcf1",
+                "name": "Creme de Frango",
+                "desc": ""
+              },
+              {
+                "id": "esfqa1",
+                "name": "Queijo com Alho Gratinado",
+                "desc": ""
+              },
+              {
+                "id": "esfcfc1",
+                "name": "Creme de Frango com Catupiry",
+                "desc": ""
+              },
+              {
+                "id": "esfnut1",
+                "name": "Nutella",
+                "desc": "Chocolate com Avelã e M&Ms."
+              }
+            ]
+          },
+          {
+            "id": "mass",
+            "label": "Massas",
+            "items": [
+              {
+                "id": "las1",
+                "name": "Lasanha à Bolonhesa",
+                "desc": "Carne à bolonhesa refogada, molhos vermelho e branco, muçarela e parmesão gratinado."
+              },
+              {
+                "id": "fet1",
+                "name": "Fettuccine do Chef",
+                "desc": "Molho branco, presunto, bacon, alho. Massa gratinada com muçarela, parmesão e orégano."
+              },
+              {
+                "id": "spa1",
+                "name": "Spaghetti à Bolonhesa",
+                "desc": "Molho pelati, manjericão e carne moída com alho. Gratinada com muçarela, parmesão e orégano."
+              },
+              {
+                "id": "alfa1",
+                "name": "Fettuccine Alfredo",
+                "desc": "Bacon, alho e salsinha ao molho Alfredo. Gratinado com parmesão, creme de leite, muçarela e orégano."
+              },
+              {
+                "id": "mare1",
+                "name": "Spaghetti del Mare",
+                "desc": "Camarão e tomate cereja refogados no alho, molho vermelho, parmesão, ervas e limão siciliano."
+              }
+            ]
+          },
+          {
+            "id": "combp",
+            "label": "Combos",
+            "items": [
+              {
+                "id": "comb1",
+                "name": "Combo Clássico",
+                "desc": "Pizza G Tradicional + Coca-Cola 1L ou Suco 500ml."
+              },
+              {
+                "id": "comb2",
+                "name": "Combo Especial",
+                "desc": "Pizza G Especial + Coca-Cola 1L ou Suco 500ml."
+              },
+              {
+                "id": "comb3",
+                "name": "Combo Premium",
+                "desc": "1 Pizza G Premium + Refri de 1L ou Suco 500ml."
+              },
+              {
+                "id": "comb4",
+                "name": "Combo Dose Dupla",
+                "desc": "2 Pizzas G Tradicional + Refri de 2L ou Suco 500ml."
+              },
+              {
+                "id": "comb5",
+                "name": "Combo da Casa",
+                "desc": "1 Pizza G Esp. da casa + Refri 1L ou Suco 500ml."
+              },
+              {
+                "id": "comb6",
+                "name": "Combo Dois90",
+                "desc": "1 Pizza G Tradicional + 1 Pizza G Premium + Refri de 2L."
+              },
+              {
+                "id": "comb7",
+                "name": "Combo Turma Toda",
+                "desc": "12 Esfihas Tradicionais + Coca-Cola 1L ou Suco 500ml."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "restaurante",
+        "label": "🍽️ Restaurante",
+        "orderType": "restaurante",
+        "subcategories": [
+          {
+            "id": "carnes",
+            "label": "Carnes",
+            "items": [
+              {
+                "id": "isc1",
+                "name": "Isca de Carne",
+                "desc": "Arroz, Isca de Carne e Batata Frita.",
+                "badge": "Prato Kids"
+              },
+              {
+                "id": "pic1",
+                "name": "Picadinho do Tio Junior",
+                "desc": "Arroz Branco, Feijão, Picadinho, Banana Frita e Salada Verde."
+              },
+              {
+                "id": "bif1",
+                "name": "Bife à Cavalo",
+                "desc": "Arroz, Feijão, Bife em Isca, Ovo Frito e Batata Frita."
+              },
+              {
+                "id": "str1",
+                "name": "Strogonoff de Carne",
+                "desc": "Arroz, Batata Frita e Strogonoff de Carne."
+              },
+              {
+                "id": "csb1",
+                "name": "Carne de Sol com Baião",
+                "desc": "Carne de Sol em Tiras Acebolada, Baião de Dois, Farofa e Vinagrete."
+              },
+              {
+                "id": "par1",
+                "name": "Bife à Parmegiana (Alcatra)",
+                "desc": "Arroz, Bife Empanado, Molho de Tomate Pelati Gratinado no Forno com Mussarela e Batata Frita."
+              },
+              {
+                "id": "csa1",
+                "name": "Carne de Sol Acebolada",
+                "desc": "Carne de Sol em Tiras Acebolada, Arroz, Feijão, Batata Frita e Vinagrete."
+              },
+              {
+                "id": "pic2",
+                "name": "Picanha Grelhada",
+                "desc": "Arroz com Brócolis, Picanha Grelhada, Batata Frita, Farofa e Vinagrete."
+              }
+            ]
+          },
+          {
+            "id": "especialidades_rest",
+            "label": "Especialidades da Casa",
+            "items": [
+              {
+                "id": "sal1",
+                "name": "Salada Ceasar c/ Frango Grelhado",
+                "desc": "Frango Grelhado, Salada (Alface, Cenoura, Tomate), Molhos, Parmesão, Ovo Cozido e Croutons."
+              },
+              {
+                "id": "spab1",
+                "name": "Spaghetti à Bolonhesa",
+                "desc": "Picadinho, Molho de Tomate Pelati e Queijo Parmesão."
+              },
+              {
+                "id": "cos1",
+                "name": "Costelinha Suína",
+                "desc": "Arroz com brócolis, maionese da casa e feijão tropeiro. Opcional: Arroz branco/Barbecue."
+              },
+              {
+                "id": "pan1",
+                "name": "Panqueca de Carne c/ Salada",
+                "desc": "1 Panqueca de Picadinho ao Molho Vermelho e Parmesão, com Salada Tropical."
+              },
+              {
+                "id": "esc1",
+                "name": "Escondidinho de Carne de Sol",
+                "desc": "300G. Acompanha: Arroz Branco."
+              }
+            ]
+          },
+          {
+            "id": "peixes",
+            "label": "Peixes",
+            "items": [
+              {
+                "id": "pei1",
+                "name": "Peixe à Delícia",
+                "desc": "Peixe Empanado Gratinado ao Molho Bechamel, Arroz, Farofa, Batata Frita e Banana Frita."
+              },
+              {
+                "id": "tam1",
+                "name": "Costelinha de Tambaqui Assada",
+                "desc": "Baião, Vinagrete e Farofa de Banana. Opcional: Arroz Branco e Feijão."
+              },
+              {
+                "id": "tam2",
+                "name": "Tambaqui à Moda da Casa",
+                "desc": "Filé Assado e Gratinado c/ Vinagrete Cremoso, Arroz c/ Brócolis e Farofa de Banana."
+              }
+            ]
+          },
+          {
+            "id": "aves",
+            "label": "Aves",
+            "items": [
+              {
+                "id": "frb1",
+                "name": "Frango Broaster",
+                "desc": "Filé de Frango em Isca Empanado, Purê de Batata e Legumes no Vapor."
+              },
+              {
+                "id": "frg1",
+                "name": "Frango Grelhado",
+                "desc": "Filé de Frango Grelhado, Arroz com Brócolis, Batata Frita, Farofa e Vinagrete."
+              },
+              {
+                "id": "frm1",
+                "name": "Frango à Milanesa",
+                "desc": "Filé de frango em isca empanado, arroz, feijão e purê de batata."
+              },
+              {
+                "id": "frpiz1",
+                "name": "Frango à Pizzaiolo",
+                "desc": "Filé gratinado c/ molho Pelati e mussarela, arroz e batata frita."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gelateria",
+        "label": "🍦 Gelateria & Sobremesas",
+        "orderType": "gelateria",
+        "subcategories": [
+          {
+            "id": "gel",
+            "label": "Gelatos",
+            "items": [
+              {
+                "id": "geld1",
+                "name": "Gelato Doe",
+                "desc": "Acondicionado em isopor térmico, ele mantém a temperatura ideal por horas – perfeito para levar pra casa e curtir com a família.",
+                "badge": "Mais pedido"
+              },
+              {
+                "id": "gelq1",
+                "name": "Gelato Quatedo",
+                "desc": "Quatro bolas de gelatos fresquinhos, variados e irresistíveis, acomodados no isopor para manter a qualidade e o sabor.",
+                "badge": "Popular"
+              },
+              {
+                "id": "gelf1",
+                "name": "Gelato Porção Família",
+                "desc": "Oito bolas de gelatos fresquinhos, variados e irresistíveis, acomodados no isopor para manter a qualidade e o sabor."
+              }
+            ]
+          },
+          {
+            "id": "tort",
+            "label": "Tortas",
+            "items": [
+              {
+                "id": "tor1",
+                "name": "Ninho com Chocolate",
+                "desc": "Massa branca, brigadeiro Ninho, brigadeiro black e chantininho."
+              },
+              {
+                "id": "tor2",
+                "name": "Abacaxi",
+                "desc": "Massa branca, brigadeiro branco, abacaxi em pedaços e creme."
+              },
+              {
+                "id": "tor3",
+                "name": "Cupuaçu",
+                "desc": "Massa branca, brigadeiro black, doce de cupuaçu e chantininho."
+              },
+              {
+                "id": "tor4",
+                "name": "Dois Amores",
+                "desc": "Massa de chocolate, brigadeiro Ninho, brigadeiro black e chantininho."
+              },
+              {
+                "id": "tor5",
+                "name": "Floresta Negra",
+                "desc": "Massa de chocolate, chantininho, amarenas e raspas de chocolate."
+              },
+              {
+                "id": "tor6",
+                "name": "Ninho com Morango",
+                "desc": "Massa branca, brigadeiro Ninho, chantininho e geleia de morango."
+              },
+              {
+                "id": "tor7",
+                "name": "Prestigio",
+                "desc": "Massa chocolate, brigadeiro black, coco, ganache e chocolate branco."
+              }
+            ]
+          },
+          {
+            "id": "acai",
+            "label": "Açaí Dois90",
+            "items": [
+              {
+                "id": "aca1",
+                "name": "Açaí Frozen 400ml",
+                "desc": "Açaí frozen cremoso, refrescante e cheio de energia, servido no copo de 400ml."
+              },
+              {
+                "id": "aca2",
+                "name": "Açaí Frozen 500ml",
+                "desc": "Açaí frozen cremoso, refrescante e cheio de energia, servido no copo de 500ml."
+              },
+              {
+                "id": "aca3",
+                "name": "Açaí Frozen 700ml",
+                "desc": "Açaí frozen cremoso, refrescante e cheio de energia, servido no copo de 700ml."
+              },
+              {
+                "id": "aca4",
+                "name": "Açaí Médio 1 Litro",
+                "desc": "O sabor incomparável no tamanho família. Pronto para servir.",
+                "badge": "Promoção"
+              }
+            ]
+          },
+          {
+            "id": "milk",
+            "label": "Milkshakes",
+            "items": [
+              {
+                "id": "milk1",
+                "name": "MilkShake OvoMaltina",
+                "desc": "Cremoso, gelado e intenso com OvoMaltina."
+              },
+              {
+                "id": "milk2",
+                "name": "MilkShake Ninho com Oreo",
+                "desc": "Leite ninho cremoso com pedaços de Oreo e chantilly."
+              },
+              {
+                "id": "milk3",
+                "name": "MilkShake Morango",
+                "desc": "Morango fresco batido com sorvete artesanal e chantilly."
+              }
+            ]
+          },
+          {
+            "id": "bolos",
+            "label": "Bolos",
+            "items": [
+              {
+                "id": "bol1",
+                "name": "Mini Bolo Chocolate Com Cobertura",
+                "desc": "Mini bolo de chocolate com calda de chocolate na parte superior.",
+                "badge": "Mais pedido"
+              },
+              {
+                "id": "bol2",
+                "name": "Bolo de Milho",
+                "desc": "Bolo macio e úmido, com sabor natural do milho fresco."
+              },
+              {
+                "id": "bol3",
+                "name": "Bolo Laranja",
+                "desc": "Bolo fofinho, com sabor natural de laranja e zero lactose.",
+                "badge": "Zero Lactose"
+              },
+              {
+                "id": "bol4",
+                "name": "Bolo Ninho com Nutella",
+                "desc": "Bolo macio de leite ninho coberto com Nutella cremosa."
+              },
+              {
+                "id": "bol5",
+                "name": "Bolo Mesclado",
+                "desc": "Massa fofinha mesclada de chocolate e baunilha."
+              }
+            ]
+          },
+          {
+            "id": "cafe",
+            "label": "Panificação & Café",
+            "items": [
+              {
+                "id": "pao1",
+                "name": "Pão Artesanal",
+                "desc": "Pão caseiro artesanal grande, assado na hora na gelateria."
+              },
+              {
+                "id": "pao2",
+                "name": "Pão Integral 7 Grãos",
+                "desc": "Artesanal, nutritivo, crocante por fora e macio por dentro."
+              },
+              {
+                "id": "cap1",
+                "name": "Cappuccino com Chantilly",
+                "desc": "Cappuccino cremoso com chantilly frescinho."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hero": {
+    "tagline": "DESDE 1999 · BOA VISTA, RORAIMA",
+    "title": "Seu dia com muito mais sabor",
+    "subtitle": "Há 25 anos criando memórias e refeições com ingredientes artesanais, receitas italianas clássicas, feitas com amor para marcar gerações.",
+    "ctaPrimary": "MONTAR MEU PEDIDO",
+    "ctaSecondary": "CONHEÇA A DOIS90",
+    "scrollText": "ROLE PARA EXPLORAR"
+  },
+  "locations": {
+    "label": "NOSSAS UNIDADES",
+    "title": "Perto de onde",
+    "titleHighlight": "você está",
+    "units": [
+      {
+        "id": "aeroporto",
+        "name": "Aeroporto",
+        "address": "R. Yeyê Coelho, 580A - Aeroporto",
+        "maps": "https://www.google.com/maps/dir//pizzaria+dois90+-+R.+Yey%C3%AA+Coelho,+580A+-+Aeroporto,+Boa+Vista+-+RR,+69310-118",
+        "order": "https://pigz.com.br/dois90pizzaria",
+        "whatsapp": "https://wa.me/559591520290",
+        "image": "/units/aeroporto-pizzaria.jpeg",
+        "amenities": [
+          {
+            "id": "delivery",
+            "label": "Delivery",
+            "icon": "🚚"
+          },
+          {
+            "id": "drive",
+            "label": "Drive-thru",
+            "icon": "🚗"
+          },
+          {
+            "id": "kids",
+            "label": "Área Kids",
+            "icon": "🧒"
+          }
+        ],
+        "sectors": [
+          {
+            "id": "pizzaria",
+            "name": "Pizzaria",
+            "hours": [
+              {
+                "label": "Loja física",
+                "time": "17:30 - 23h"
+              },
+              {
+                "label": "Delivery",
+                "time": "17:30 - 23h"
+              },
+              {
+                "label": "Drive",
+                "time": "17:30 - 23h"
+              },
+              {
+                "label": "Jantar",
+                "time": "18:30 - 22h"
+              }
+            ]
+          },
+          {
+            "id": "restaurante",
+            "name": "Restaurante",
+            "hours": [
+              {
+                "label": "Segunda a sábado",
+                "time": "11:15 - 14:15"
+              },
+              {
+                "label": "Status",
+                "time": "Possui Delivery e Drive"
+              }
+            ]
+          },
+          {
+            "id": "gelateria",
+            "name": "Gelateria",
+            "hours": [
+              {
+                "label": "Delivery Seg-Sáb",
+                "time": "08:30 - 22h"
+              },
+              {
+                "label": "Delivery Dom",
+                "time": "12:00 - 22h"
+              },
+              {
+                "label": "Loja física Seg-Sáb",
+                "time": "11:15 - 23h"
+              },
+              {
+                "label": "Loja física Dom",
+                "time": "12:00 - 23h"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cacari",
+        "name": "Caçari",
+        "address": "Av. Ville Roy, 2185 - Caçari",
+        "maps": "https://www.google.com/maps?client=firefox-b-d&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KcXKtcmZCJONMRJLiq0VPBD5&daddr=Av.+Ville+Roy,+2155+-+Terreo+-+Ca%C3%A7ari,+Boa+Vista+-+RR,+69307-725",
+        "order": "http://pigz.com.br/dois90pizzaria",
+        "whatsapp": "https://api.whatsapp.com/send?phone=559536218600",
+        "image": "/units/cacari.jpeg",
+        "amenities": [
+          {
+            "id": "delivery",
+            "label": "Delivery",
+            "icon": "🚚"
+          },
+          {
+            "id": "kids",
+            "label": "Área Kids",
+            "icon": "🧒"
+          }
+        ],
+        "sectors": [
+          {
+            "id": "pizzaria",
+            "name": "Pizzaria",
+            "hours": [
+              {
+                "label": "Todos os dias",
+                "time": "18:00 - 23:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "aparecida",
+        "name": "Aparecida",
+        "address": "R. José Bonifácio, 504 - Aparecida",
+        "maps": "https://www.google.com/maps/dir//Gelatos+dois90,+R.+Jos%C3%A9+Bonif%C3%A1cio,+504+-+Aparecida,+Boa+Vista+-+RR,+69306-275",
+        "order": "https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-e-cafeteria-dois90-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d",
+        "whatsapp": "https://api.whatsapp.com/send?phone=5595981126473",
+        "image": "/units/aparecida.jpeg",
+        "amenities": [
+          {
+            "id": "delivery",
+            "label": "Delivery",
+            "icon": "🚚"
+          },
+          {
+            "id": "kids",
+            "label": "Área Kids",
+            "icon": "🧒"
+          }
+        ],
+        "sectors": [
+          {
+            "id": "gelateria",
+            "name": "Gelateria",
+            "hours": [
+              {
+                "label": "Delivery / Retirada",
+                "time": "Seg-Dom 08:30 - 22:00"
+              },
+              {
+                "label": "Loja física",
+                "time": "Seg-Dom 12:15 - 23:15"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
