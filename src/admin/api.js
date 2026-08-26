@@ -23,6 +23,11 @@ export function me() {
   return request('/api/auth/me');
 }
 
+/** Limites de caracteres e de quantidade, definidos no backend. */
+export function fetchLimits() {
+  return request('/api/limits');
+}
+
 export function fetchContent() {
   return request('/api/content', { cache: 'no-store' });
 }
@@ -34,4 +39,15 @@ export function saveSection(section, data) {
     headers: JSON_HEADERS,
     body: JSON.stringify(data),
   });
+}
+
+/**
+ * Envia um arquivo de mídia e devolve { url, type, size }.
+ * O upload nao usa JSON_HEADERS: o navegador precisa definir o boundary do
+ * multipart sozinho.
+ */
+export async function uploadMedia(file) {
+  const body = new FormData();
+  body.append('file', file);
+  return request('/api/upload', { method: 'POST', body });
 }

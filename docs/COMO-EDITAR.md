@@ -56,12 +56,33 @@ Na barra fixa embaixo da tela ficam os dois botões que importam:
 > **Preços não são editados aqui** — o site não mostra preço. Preço se muda no
 > sistema de pedidos (Pigz, iFood, Anota AI).
 
+### Os limites e por que eles existem
+
+Alguns campos param de aceitar texto quando chegam no limite, e um contador
+aparece do lado do nome do campo quando você está perto dele. Não é frescura: um
+texto muito longo desalinha os cards no site.
+
+| Campo | Limite |
+|---|---|
+| Nome do item | 60 caracteres |
+| Descrição do item | 200 caracteres |
+| Selo | 24 caracteres |
+| Itens por subcategoria | 30 |
+| Linhas de horário por setor | 12 |
+| Promoções | 8 |
+
+Quando um limite de quantidade é atingido, o botão de adicionar fica cinza e
+explica o motivo. Para adicionar outro, remova algum primeiro.
+
 ## 4. Editar as unidades
 
 1. Clique na aba **Unidades**.
 2. Clique na unidade (Aeroporto, Caçari ou Aparecida).
 3. Ajuste o que precisar:
    - **Nome** e **Endereço** — o que aparece no card da unidade.
+   - **Foto da fachada** — clique em **Trocar arquivo** e escolha a imagem no
+     seu computador. O tamanho recomendado é **1600 × 890** (proporção 16:9),
+     igual às fotos atuais.
    - **Link do botão FAZER PEDIDO** — para onde o cliente vai ao clicar.
    - **Link do COMO CHEGAR** — o endereço do Google Maps.
    - **Link do WhatsApp** — aparece dentro da janela de horários.
@@ -75,10 +96,53 @@ Na barra fixa embaixo da tela ficam os dois botões que importam:
 > **Os links precisam estar completos**, começando com `https://`. O jeito mais
 > seguro é abrir a página no navegador, copiar o endereço da barra e colar aqui.
 
-> **Trocar a foto de uma unidade** não é feito pelo painel — as fotos são
-> arquivos do site. Peça para o desenvolvedor.
 
-## 5. Editar os textos do Início
+
+## 5. Criar e editar promoções
+
+As promoções são **faixas** que aparecem entre as seções do site — como a do
+Combo Esfiha, que aparece logo depois do cardápio. Cada faixa é um arquivo só:
+uma imagem ou um vídeo, ocupando a largura toda da página.
+
+1. Clique na aba **Promoções**.
+2. Para criar: clique em **+ Adicionar promoção** no fim da lista.
+3. Para editar uma que já existe: clique no nome dela.
+4. Preencha:
+   - **Mostrar no site** — a chavinha que liga e desliga. Uma promoção
+     desligada continua salva, só não aparece. *Prefira desligar a remover* se a
+     promoção pode voltar depois.
+   - **Nome da promoção** — só para você se achar no painel; não aparece no site.
+   - **Onde aparece na página** — escolha entre *Depois do Início*, *Depois do
+     Cardápio*, *Depois das Unidades* e *Depois da Galeria de redes*.
+   - **Arquivo da promoção** — clique em **Trocar arquivo** e escolha do seu
+     computador.
+   - **Link ao clicar** — opcional. Se preencher, a faixa inteira vira clicável.
+5. Use as setas **↑ ↓** para mudar a ordem, quando houver mais de uma promoção
+   no mesmo lugar da página.
+6. Clique em **Publicar alterações**.
+
+### Que tamanho o arquivo tem que ter
+
+A faixa sempre ocupa a largura toda da tela. O que muda de um formato para o
+outro é a **altura** dela na página. Os dois tamanhos abaixo são exatamente os
+das promoções que a Dois90 já usa hoje:
+
+| Formato | Tamanho | Proporção | Igual à |
+|---|---|---|---|
+| **Faixa larga** | 4330 × 1080 | 4:1 | promoção do Combo Esfiha |
+| **Faixa cinema** | 2534 × 1080 | 2,35:1 | promoção do Sorteio da Moto |
+
+A *faixa larga* é uma tira fina, atravessando a tela. A *faixa cinema* é bem
+mais alta, ocupa mais espaço na página.
+
+Aceita **JPG, PNG, WebP ou MP4**, no máximo **25 MB**. Vídeo toca sozinho, em
+loop e **sempre sem som** — não coloque narração nem música, porque ninguém vai
+ouvir.
+
+> Se o arquivo não tiver exatamente essa proporção, ele não fica cortado nem
+> esticado: a faixa só fica mais alta ou mais baixa do que o esperado.
+
+## 6. Editar os textos do Início
 
 1. Clique na aba **Início**.
 2. Ajuste o que quiser:
@@ -90,7 +154,7 @@ Na barra fixa embaixo da tela ficam os dois botões que importam:
    - **Texto de rolagem** — a frase no pé da primeira tela.
 3. Clique em **Publicar alterações**.
 
-## 6. Conferir o resultado
+## 7. Conferir o resultado
 
 Depois de publicar, clique em **Ver site** no topo. A alteração já está no ar —
 não precisa esperar nem pedir deploy para ninguém.

@@ -778,5 +778,27 @@
         ]
       }
     ]
+  },
+  "promos": {
+    "sections": [
+      {
+        "id": "combo-esfiha",
+        "name": "Combo Esfiha",
+        "media": "/site esfiha.mp4",
+        "type": "video",
+        "position": "apos-cardapio",
+        "link": "",
+        "enabled": true
+      },
+      {
+        "id": "sorteio-moto",
+        "name": "Sorteio da Moto",
+        "media": "/site sorteio moto.mp4",
+        "type": "video",
+        "position": "apos-unidades",
+        "link": "",
+        "enabled": false
+      }
+    ]
   }
 }

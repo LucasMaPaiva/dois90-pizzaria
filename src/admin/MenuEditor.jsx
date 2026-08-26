@@ -1,11 +1,13 @@
-import { Collapsible, TextArea, TextField } from './fields';
+import { AddButton, Collapsible, TextArea, TextField } from './fields';
 
 function newId(prefix) {
   return `${prefix}_${Math.random().toString(36).slice(2, 8)}`;
 }
 
-export default function MenuEditor({ value, onChange }) {
+export default function MenuEditor({ value, onChange, limits }) {
   const menu = value ?? {};
+  const T = limits?.text ?? {};
+  const C = limits?.count ?? {};
   const categories = menu.categories ?? [];
 
   const setHeader = (key) => (v) => onChange({ ...menu, [key]: v });
@@ -63,16 +65,33 @@ export default function MenuEditor({ value, onChange }) {
       </p>
 
       <div className="adm-grid-2">
-        <TextField label="Tarja da seção" value={menu.heading} onChange={setHeader('heading')} />
-        <TextField label="Título" value={menu.title} onChange={setHeader('title')} />
+        <TextField
+          label="Tarja da seção"
+          value={menu.heading}
+          onChange={setHeader('heading')}
+          max={T.menuHeading}
+        />
+        <TextField
+          label="Título"
+          value={menu.title}
+          onChange={setHeader('title')}
+          max={T.menuTitle}
+        />
         <TextField
           label="Título em destaque"
           value={menu.titleHighlight}
           onChange={setHeader('titleHighlight')}
+          max={T.menuTitleHighlight}
           hint="Aparece em itálico dourado, depois do título"
         />
       </div>
-      <TextArea label="Subtítulo" value={menu.subtitle} onChange={setHeader('subtitle')} rows={2} />
+      <TextArea
+        label="Subtítulo"
+        value={menu.subtitle}
+        onChange={setHeader('subtitle')}
+        rows={2}
+        max={T.menuSubtitle}
+      />
 
       <h3 className="adm-h3">Categorias</h3>
 
@@ -86,6 +105,7 @@ export default function MenuEditor({ value, onChange }) {
             label="Nome da categoria"
             value={cat.label}
             onChange={(v) => updateCategory(catIdx, { label: v })}
+            max={T.categoryLabel}
             hint="O emoji faz parte do nome"
           />
 
@@ -100,6 +120,7 @@ export default function MenuEditor({ value, onChange }) {
                 label="Nome da subcategoria"
                 value={sub.label}
                 onChange={(v) => updateSub(catIdx, subIdx, { label: v })}
+                max={T.subcategoryLabel}
               />
 
               <div className="adm-items">
@@ -139,12 +160,14 @@ export default function MenuEditor({ value, onChange }) {
                       label="Nome"
                       value={item.name}
                       onChange={(v) => updateItem(catIdx, subIdx, itemIdx, { name: v })}
+                      max={T.itemName}
                     />
                     <TextArea
                       label="Descrição"
                       value={item.desc}
                       onChange={(v) => updateItem(catIdx, subIdx, itemIdx, { desc: v })}
                       rows={2}
+                      max={T.itemDesc}
                     />
                     <TextField
                       label="Selo"
@@ -152,6 +175,7 @@ export default function MenuEditor({ value, onChange }) {
                       onChange={(v) =>
                         updateItem(catIdx, subIdx, itemIdx, { badge: v || undefined })
                       }
+                      max={T.itemBadge}
                       placeholder="Deixe vazio para não mostrar selo"
                       hint="Ex: Mais pedida, Promoção, Zero Lactose"
                     />
@@ -159,13 +183,12 @@ export default function MenuEditor({ value, onChange }) {
                 ))}
               </div>
 
-              <button
-                type="button"
-                className="adm-btn adm-btn-ghost"
+              <AddButton
+                label={`+ Adicionar item em ${sub.label}`}
                 onClick={() => addItem(catIdx, subIdx)}
-              >
-                + Adicionar item em {sub.label}
-              </button>
+                current={sub.items?.length ?? 0}
+                max={C.itemsPerSubcategory}
+              />
             </Collapsible>
           ))}
         </Collapsible>

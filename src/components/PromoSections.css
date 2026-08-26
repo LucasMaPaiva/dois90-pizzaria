@@ -1,0 +1,19 @@
+/* Seções de promoção geridas pelo painel. Um modelo só: largura cheia, altura
+   pela proporção do arquivo. */
+
+.promo-band {
+  width: 100%;
+  background: #080808;
+  overflow: hidden;
+  line-height: 0; /* mata o espaço fantasma abaixo de video/img inline */
+}
+
+.promo-band a {
+  display: block;
+}
+
+.promo-band-media {
+  display: block;
+  width: 100%;
+  height: auto;
+}

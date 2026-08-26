@@ -9,9 +9,12 @@ const DB_PATH = process.env.DB_PATH || path.join(__dirname, 'content.db');
 
 // Document store simples: uma linha por secao, cada uma guardando o JSON
 // daquela secao. Evita modelar pizza/unidade como linhas relacionais.
-export const SECTIONS = ['menu', 'hero', 'locations'];
+export const SECTIONS = ['menu', 'hero', 'locations', 'promos'];
+
+export const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(path.dirname(DB_PATH), 'uploads');
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
 const db = new Database(DB_PATH);
 db.pragma('journal_mode = WAL');

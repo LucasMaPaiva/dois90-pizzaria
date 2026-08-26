@@ -610,7 +610,7 @@
   },
   "hero": {
     "tagline": "DESDE 1999 · BOA VISTA, RORAIMA",
-    "title": "Seu teste com muito mais sabor",
+    "title": "Seu dia com muito mais sabor",
     "subtitle": "Há 25 anos criando memórias e refeições com ingredientes artesanais, receitas italianas clássicas, feitas com amor para marcar gerações.",
     "ctaPrimary": "MONTAR MEU PEDIDO",
     "ctaSecondary": "CONHEÇA A DOIS90",
@@ -859,5 +859,27 @@
   "videos": {
     "combo": "/site esfiha.mp4",
     "promo": "/site sorteio moto.mp4"
+  },
+  "promos": {
+    "sections": [
+      {
+        "id": "combo-esfiha",
+        "name": "Combo Esfiha",
+        "media": "/site esfiha.mp4",
+        "type": "video",
+        "position": "apos-cardapio",
+        "link": "",
+        "enabled": true
+      },
+      {
+        "id": "sorteio-moto",
+        "name": "Sorteio da Moto",
+        "media": "/site sorteio moto.mp4",
+        "type": "video",
+        "position": "apos-unidades",
+        "link": "",
+        "enabled": false
+      }
+    ]
   }
 }

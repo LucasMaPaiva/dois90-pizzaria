@@ -4,16 +4,19 @@ import * as api from './api';
 import HeroEditor from './HeroEditor';
 import MenuEditor from './MenuEditor';
 import LocationsEditor from './LocationsEditor';
+import PromosEditor from './PromosEditor';
 
 const TABS = [
   { id: 'menu', label: 'Cardápio', Editor: MenuEditor },
   { id: 'locations', label: 'Unidades', Editor: LocationsEditor },
+  { id: 'promos', label: 'Promoções', Editor: PromosEditor },
   { id: 'hero', label: 'Início', Editor: HeroEditor },
 ];
 
 export default function Dashboard({ onSignOut }) {
   const [saved, setSaved] = useState(null); // conteudo como esta no banco
   const [draft, setDraft] = useState(null); // conteudo em edicao
+  const [limits, setLimits] = useState(null); // limites vindos do backend
   const [activeTab, setActiveTab] = useState('menu');
   const [loadError, setLoadError] = useState('');
   const [saving, setSaving] = useState(false);
@@ -21,11 +24,11 @@ export default function Dashboard({ onSignOut }) {
   const shellRef = useRef(null);
 
   useEffect(() => {
-    api
-      .fetchContent()
-      .then((data) => {
+    Promise.all([api.fetchContent(), api.fetchLimits()])
+      .then(([data, limitValues]) => {
         setSaved(data);
         setDraft(data);
+        setLimits(limitValues);
       })
       .catch((err) => setLoadError(err.message));
   }, []);
@@ -126,6 +129,7 @@ export default function Dashboard({ onSignOut }) {
       <main className="adm-main">
         <Editor
           value={draft[activeTab]}
+          limits={limits}
           onChange={(next) => setDraft((prev) => ({ ...prev, [activeTab]: next }))}
         />
       </main>

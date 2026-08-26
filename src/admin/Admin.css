@@ -421,3 +421,132 @@
   .adm-savebar-actions { margin-left: 0; }
   .adm-savebar-actions .adm-btn { flex: 1; }
 }
+
+/* --- Select --- */
+.adm-field select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--adm-border);
+  border-radius: 6px;
+  background: var(--adm-surface);
+  font: inherit;
+  color: inherit;
+}
+
+.adm-field select:focus {
+  outline: 2px solid var(--adm-accent);
+  outline-offset: -1px;
+  border-color: var(--adm-accent);
+}
+
+/* --- Liga/desliga --- */
+.adm-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.adm-toggle input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--adm-accent);
+  cursor: pointer;
+}
+
+/* --- Campo de midia --- */
+.adm-media-preview {
+  background: #101215;
+  border: 1px solid var(--adm-border);
+  border-radius: 6px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.adm-media-preview img,
+.adm-media-preview video {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+.adm-media-empty {
+  padding: 22px 14px;
+  border: 1px dashed var(--adm-border);
+  border-radius: 6px;
+  text-align: center;
+  color: var(--adm-muted);
+}
+
+.adm-media-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adm-media-path {
+  font-size: 11px;
+  color: var(--adm-muted);
+  background: #eef0f3;
+  border-radius: 4px;
+  padding: 3px 7px;
+  overflow-wrap: anywhere;
+}
+
+/* --- Tamanhos recomendados --- */
+.adm-formats {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px;
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: 8px;
+}
+
+.adm-formats-title {
+  font-size: 13px;
+}
+
+.adm-format {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adm-format-name {
+  font-weight: 600;
+  min-width: 108px;
+}
+
+.adm-format code {
+  background: #eef0f3;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 12px;
+}
+
+/* --- Contador de caracteres --- */
+.adm-counter {
+  float: right;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--adm-muted);
+}
+
+.adm-counter.full {
+  color: var(--adm-danger);
+  font-weight: 700;
+}
+
+/* --- Botao de adicionar com limite --- */
+.adm-add {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+}
