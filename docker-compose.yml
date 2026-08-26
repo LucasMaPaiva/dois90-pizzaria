@@ -30,11 +30,15 @@ services:
       NODE_ENV: production
       PORT: 3001
       DB_PATH: /data/content.db
+      BACKUP_KEEP: ${BACKUP_KEEP:-14}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:?defina ADMIN_PASSWORD no .env}
       JWT_SECRET: ${JWT_SECRET:?defina JWT_SECRET no .env}
     volumes:
       # Volume nomeado: o SQLite sobrevive a rebuild/recreate dos containers.
       - dois90-db-data:/data
+      # Os snapshots caem num diretorio normal do host, para que cron e rclone
+      # alcancem sem precisar entrar no container.
+      - ./backups:/backups
     logging:
       driver: "json-file"
       options:

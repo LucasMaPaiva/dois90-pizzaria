@@ -232,15 +232,76 @@ cd server && npm install && ADMIN_PASSWORD=... JWT_SECRET=... npm start
 npm run dev                   # o vite faz proxy de /api pro 3001
 ```
 
+## Backup
+
+### Por que o jeito obvio nao funciona
+
+O banco roda em WAL. Numa medicao real durante o desenvolvimento, o
+`content.db` tinha **4 KB** enquanto o `content.db-wal` tinha **185 KB** — quase
+todo o conteudo vivia no WAL. Um `cp content.db` ou `docker cp` produz um
+arquivo que abre com **`no such table: content`**: um backup que parece ter dado
+certo e nao tem nada dentro.
+
+O certo e `VACUUM INTO`, que gera um arquivo unico, compacto e
+transacionalmente consistente. E o que o `server/backup.js` faz, e ele roda
+`integrity_check` no resultado antes de declarar sucesso.
+
+### A ordem importa
+
+A midia e capturada **antes** do banco. Se um upload acontecer entre os dois
+passos, o arquivo entra no pacote sem ninguem apontar pra ele — um orfao
+inofensivo. Na ordem inversa, o banco poderia referenciar um arquivo que nao
+esta no pacote, e a promocao quebraria no restore.
+
+A copia da midia usa hardlink dentro do proprio volume: instantanea e sem gastar
+disco.
+
+### Onde as coisas ficam
+
+Os **dados** seguem no volume nomeado `dois90-db-data` — nada a migrar. Apenas
+os **snapshots** caem em `./backups`, um diretorio normal do host, para que cron
+e rclone alcancem sem precisar entrar no container. `backups/` esta no
+`.gitignore`.
+
+### Comandos
+
+```bash
+make backup                                   # gera um snapshot
+make backup-list                              # lista, do mais novo ao mais antigo
+make restore FILE=dois90-2026-08-26-1453.tar.gz
+```
+
+O `make deploy` tira um snapshot antes de subir — rede de seguranca para quando
+a mudanca e nossa, nao do cliente.
+
+O `restore` valida o pacote antes de tocar em producao, guarda um
+`pre-restore-*.db` do estado atual, remove os arquivos `-wal`/`-shm` junto com o
+banco (senao o SQLite tenta reaplicar um WAL que nao pertence mais a ele) e
+acrescenta a midia sem apagar o que ja existe.
+
+### Copia externa
+
+`BACKUP_REMOTE` no `.env`, no formato do rclone (ex.:
+`BACKUP_REMOTE=gdrive:dois90-backups`). Sem essa linha, o `make backup` avisa que
+ficou somente local.
+
+**Armadilha do Google Drive com conta de empresa:** uma service account nao tem
+cota de armazenamento propria. Mandar para o "Meu Drive" dela falha por falta de
+espaco. Com Google Workspace, o destino tem que ser um **Drive compartilhado**
+com a service account adicionada como membro.
+
+### Teste de restore
+
+O ciclo completo foi exercitado, nao so a geracao: conteudo criado e midia
+enviada -> `make backup` -> hero destruido e toda a midia apagada -> `make
+restore` -> conteudo e midia de volta, arquivo servindo com HTTP 200 e
+`pre-restore` criado. Backup que nunca foi restaurado nao e backup.
+
 ## O que falta
 
 1. Gravar o vídeo tutorial usando o `COMO-EDITAR.md` como roteiro.
-2. **Decidir onde os dados ficam para efeito de backup** — mídia e banco vivem
-   no volume Docker `dois90-db-data`, fora do git. Se o servidor perder o
-   volume, volta tudo ao `seed.json`: as edições do cliente e os arquivos que
-   ele subiu somem. Se não houver rotina de backup que alcance volumes Docker,
-   trocar por um bind mount num caminho do host (ex. `/srv/dois90/data`) — uma
-   linha no compose, mesmo comportamento pra aplicação.
+2. **Configurar o rclone na VPS** e preencher `BACKUP_REMOTE` no `.env`, para o
+   backup deixar de ser somente local (ver a seção Backup acima).
 3. Limpar do `.env` as variáveis `VITE_*` que sobraram da abordagem antiga
    (`VITE_ADMIN_PASSWORD`, `VITE_GITHUB_TOKEN`, `VITE_GITHUB_OWNER`,
    `VITE_GITHUB_REPO`) — não são mais lidas por nada.
