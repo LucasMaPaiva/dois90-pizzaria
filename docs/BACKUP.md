@@ -90,8 +90,8 @@ sem precisar entrar no container.
 
 > ## 🚧 Status: PENDENTE
 >
-> Esta parte **ainda não está configurada**. Depende de criar a conta do Google
-> Workspace, o que está em andamento. Até lá o backup roda normalmente, mas
+> Esta parte **ainda não está configurada** na VPS. O Workspace já existe;
+> falta executar os passos abaixo. Até lá o backup roda normalmente, mas
 > **fica somente local na VPS**.
 >
 > O que já funciona hoje: snapshot diário, verificação de integridade, retenção e
@@ -110,7 +110,7 @@ Confira tudo isto **antes** de começar — os passos abaixo não funcionam sem:
 
 | # | Pré-requisito | Status | Por que é necessário |
 |---|---|---|---|
-| 1 | **Conta Google Workspace** (domínio próprio, plano pago) | ⬜ a criar | Drive compartilhado só existe no Workspace. Sem ele, a service account não tem onde escrever. |
+| 1 | **Conta Google Workspace** (domínio próprio, plano pago) | ✅ já existe | Drive compartilhado só existe no Workspace. Sem ele, a service account não tem onde escrever. |
 | 2 | Acesso ao Google Cloud Console com permissão de criar projeto e conta de serviço | ⬜ | Onde a service account e a chave JSON nascem. |
 | 3 | **Google Drive API** ativada no projeto | ⬜ | Sem ela o rclone recebe 403. |
 | 4 | **Drive compartilhado** criado, com a service account como Gerente de conteúdo | ⬜ | É ele que fornece a cota de armazenamento (ver a armadilha abaixo). |
@@ -119,12 +119,13 @@ Confira tudo isto **antes** de começar — os passos abaixo não funcionam sem:
 | 7 | `BACKUP_REMOTE` preenchido no `.env` da VPS | ⬜ | É o que liga a cópia externa no `make backup`. |
 | 8 | Saída de rede da VPS para `googleapis.com` | ⬜ | Normalmente já existe; só é problema com firewall de saída restritivo. |
 
-O item 1 é o bloqueio atual. Os itens 2 a 5 dependem dele. Os itens 6 a 8 podem
-ser adiantados a qualquer momento.
+O item 1 está resolvido — a AE3 tem Workspace. Falta executar os itens 2 a 8,
+que é o que as seções abaixo cobrem.
 
-### Se quiser cópia externa antes do Workspace existir
+### Alternativa: OAuth de usuário (não é o caminho daqui)
 
-Dá para usar OAuth de usuário com um Gmail comum, sem Workspace nenhum:
+Registrado só para o caso de um projeto sem Workspace. Dá para usar OAuth de
+usuário com um Gmail comum:
 
 ```bash
 # numa máquina COM navegador (seu notebook):
@@ -133,8 +134,8 @@ rclone authorize "drive"
 ```
 
 Funciona, mas o backup fica amarrado a uma conta pessoal — se a pessoa sair da
-empresa ou trocar a senha, o backup para em silêncio. Por isso o caminho de
-service account é o preferido, e vale esperar o Workspace.
+empresa ou trocar a senha, o backup para em silêncio. Como existe Workspace,
+use a service account.
 
 ## ⚠️ A armadilha que derruba quase todo mundo
 
@@ -151,7 +152,7 @@ fornece o espaço a ela.
 > (`rclone authorize "drive"` numa máquina com navegador, colando o token na
 > VPS). Funciona, mas amarra o backup a uma conta pessoal.
 
-## 1. Google Cloud (navegador, uma vez) — *requer o Workspace criado*
+## 1. Google Cloud (navegador, uma vez)
 
 1. Em [console.cloud.google.com](https://console.cloud.google.com), crie ou
    escolha um projeto.

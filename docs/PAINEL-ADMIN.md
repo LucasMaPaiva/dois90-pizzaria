@@ -251,8 +251,8 @@ O essencial:
   vire um órfão inofensivo em vez de uma referência quebrada.
 - Dados no volume `dois90-db-data`; snapshots em `./backups`, um diretório
   normal do host que cron e rclone alcançam.
-- **A cópia externa ainda não está ligada** — depende de criar a conta do Google
-  Workspace. Hoje o backup é somente local na VPS.
+- **A cópia externa ainda não está ligada** — falta configurar o rclone na VPS
+  e preencher `BACKUP_REMOTE`. Hoje o backup é somente local na VPS.
 
 ## O que falta
 
